@@ -1,0 +1,24 @@
+---
+import '@fontsource/nunito/600.css';
+import '@fontsource/nunito/800.css';
+import 'tailwindcss/tailwind.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>feedjoy</title>
+  </head>
+  <body
+    class={`light-theme mx-auto flex min-h-screen max-w-screen-lg flex-col bg-1
+            px-fluid-4 font-extrabold tracking-wide text-1 text-base dark:dark-theme`}
+  >
+    <header class="flex items-center gap-4 py-4 text-base"></header>
+    <main class="flex-1"><slot /></main>
+    <footer class="self-center p-2 text-center text-1 text-sm">
+      <p>created by: christian penrod ©{new Date().getUTCFullYear()}</p>
+    </footer>
+  </body>
+</html>
