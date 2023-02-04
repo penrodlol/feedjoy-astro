@@ -1,5 +1,25 @@
 ---
+import Post from '@components/Post.astro';
 import Layout from '@layouts/Layout.astro';
+import { supabase } from '@lib/supabase';
+
+const posts = await supabase
+  .from('post')
+  .select()
+  .order('pub_date', { ascending: false })
+  .limit(30);
 ---
 
-<Layout />
+<Layout>
+  <div class="mx-auto my-fluid-4 max-w-screen-md">
+    <ul class="flex flex-col gap-fluid-2">
+      {
+        posts.data?.map((post) => (
+          <li>
+            <Post post={post} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>

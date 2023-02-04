@@ -2,9 +2,11 @@
 import '@fontsource/nunito/600.css';
 import '@fontsource/nunito/800.css';
 import 'tailwindcss/tailwind.css';
+
+const logo = await import('@public/logo.svg?raw');
 ---
 
-<html lang="en">
+<html lang="en" class="font-extrabold tracking-wide">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -12,12 +14,18 @@ import 'tailwindcss/tailwind.css';
     <title>feedjoy</title>
   </head>
   <body
-    class={`light-theme mx-auto flex min-h-screen max-w-screen-lg flex-col bg-1
-            px-fluid-4 font-extrabold tracking-wide text-1 text-base dark:dark-theme`}
+    class={`flex min-h-screen flex-col bg-1 text-1 text-base
+            max-w-screen-lg mx-auto px-fluid-4`}
   >
-    <header class="flex items-center gap-4 py-4 text-base"></header>
-    <main class="flex-1"><slot /></main>
-    <footer class="self-center p-2 text-center text-1 text-sm">
+    <header class="flex items-center gap-6 py-2">
+      <a href="/" class="mr-auto h-24 w-24" aria-label="Home">
+        <Fragment set:html={logo.default} aria-hidden />
+      </a>
+      <a href="/" class="text-2">vault</a>
+      <a href="/" class="text-2">about</a>
+    </header>
+    <main class="flex-1 motion-safe:animate-fade-in"><slot /></main>
+    <footer class="self-center p-2 text-center text-sm">
       <p>created by: christian penrod ©{new Date().getUTCFullYear()}</p>
     </footer>
   </body>

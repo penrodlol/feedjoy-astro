@@ -1,0 +1,21 @@
+---
+import type { Post } from '@lib/supabase';
+import Date from './Date.astro';
+
+type Props = { post: Post };
+
+const { post } = Astro.props;
+---
+
+<a
+  href={post.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="flex flex-col rounded-md bg-2 px-4 py-2 shadow"
+>
+  <span class="mb-1 text-base">{post.title}</span>
+  <div class="text-2 text-sm">
+    <span>{post.site}</span>
+    <Date>{post.pub_date}</Date>
+  </div>
+</a>
