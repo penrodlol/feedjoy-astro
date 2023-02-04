@@ -1,9 +1,10 @@
 ---
+import Filter from '@components/Filter.astro';
 import Post from '@components/Post.astro';
 import Layout from '@layouts/Layout.astro';
 import { supabase } from '@lib/supabase';
 
-const posts = await supabase
+const { data: posts } = await supabase
   .from('post')
   .select()
   .order('pub_date', { ascending: false })
@@ -11,15 +12,15 @@ const posts = await supabase
 ---
 
 <Layout>
-  <div class="mx-auto my-fluid-4 max-w-screen-md">
-    <ul class="flex flex-col gap-fluid-2">
-      {
-        posts.data?.map((post) => (
-          <li>
-            <Post post={post} />
-          </li>
-        ))
-      }
-    </ul>
+  <div class="mt-fluid-2 flex flex-col gap-fluid-4">
+    <section class="mx-auto w-full md:w-3/4">
+      <Filter />
+    </section>
+    <section>
+      <!-- prettier-ignore -->
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {posts?.map((post) => <li><Post post={post} /></li>)}
+      </ul>
+    </section>
   </div>
 </Layout>

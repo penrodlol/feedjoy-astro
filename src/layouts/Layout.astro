@@ -1,4 +1,5 @@
 ---
+import Anchor from '@components/Anchor.astro';
 import '@fontsource/nunito/600.css';
 import '@fontsource/nunito/800.css';
 import 'tailwindcss/tailwind.css';
@@ -18,13 +19,13 @@ const logo = await import('@public/logo.svg?raw');
             max-w-screen-lg mx-auto px-fluid-4`}
   >
     <header class="flex items-center gap-6 py-2">
-      <a href="/" class="mr-auto h-24 w-24" aria-label="Home">
+      <a href="/" class="mr-auto h-16 w-28" aria-label="Home">
         <Fragment set:html={logo.default} aria-hidden />
       </a>
-      <a href="/" class="text-2">vault</a>
-      <a href="/" class="text-2">about</a>
+      <Anchor href="/">vault</Anchor>
+      <Anchor href="/">about</Anchor>
     </header>
-    <main class="flex-1 motion-safe:animate-fade-in"><slot /></main>
+    <main class="flex-1 pb-8 motion-safe:animate-fade-in"><slot /></main>
     <footer class="self-center p-2 text-center text-sm">
       <p>created by: christian penrod ©{new Date().getUTCFullYear()}</p>
     </footer>

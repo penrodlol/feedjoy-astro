@@ -1,0 +1,16 @@
+---
+import { Search } from 'lucide-preact';
+---
+
+<form
+  class="flex items-center justify-between gap-1 rounded bg-2 px-4 py-1 shadow"
+>
+  <input
+    class="w-full bg-transparent font-semibold caret-brand-1 outline-none"
+    placeholder="filter"
+    aria-label="posts filter"
+  />
+  <button type="submit" aria-label="submit posts filter" class="outline-none">
+    <Search class="stroke-brand-1" aria-hidden />
+  </button>
+</form>

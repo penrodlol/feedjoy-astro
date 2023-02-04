@@ -1,5 +1,6 @@
 ---
 import type { Post } from '@lib/supabase';
+import { ExternalLink } from 'lucide-preact';
 import Date from './Date.astro';
 
 type Props = { post: Post };
@@ -11,11 +12,13 @@ const { post } = Astro.props;
   href={post.link}
   target="_blank"
   rel="noopener noreferrer"
-  class="flex flex-col rounded-md bg-2 px-4 py-2 shadow"
+  class={`relative group flex h-full flex-col rounded bg-2 py-4 px-6 shadow text-sm
+          hover:outline-2 hover:outline hover:outline-brand-1 hover:outline-offset-4`}
 >
-  <span class="mb-1 text-base">{post.title}</span>
-  <div class="text-2 text-sm">
+  <span class="mb-1 text-brand-2 group-hover:text-brand-1">{post.title}</span>
+  <div class="font-semibold text-2">
     <span>{post.site}</span>
     <Date>{post.pub_date}</Date>
   </div>
+  <ExternalLink class="absolute top-1 right-1 w-4 h-4 opacity-50" />
 </a>
