@@ -6,7 +6,8 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@lib/*": ["src/lib/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@state/*": ["src/state/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "preact"

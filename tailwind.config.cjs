@@ -24,5 +24,6 @@ module.exports = {
       keyframes: { 'fade-in': { from: { opacity: 0 }, to: { opacity: 1 } } },
     },
   },
+  future: { hoverOnlyWhenSupported: true },
   plugins: [require('tailwindcss-fluid-type')],
 };

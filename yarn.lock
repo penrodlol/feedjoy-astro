@@ -417,6 +417,11 @@
   resolved "https://registry.yarnpkg.com/@ljharb/has-package-exports-patterns/-/has-package-exports-patterns-0.0.2.tgz#c1718939b65efa1f45f53686c2fcfa992b9fb68f"
   integrity sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==
 
+"@nanostores/preact@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@nanostores/preact/-/preact-0.3.1.tgz#e5c7f58f1328fcdb57a10a0b9cd5c58c2150c5cc"
+  integrity sha512-D5lC1tNhwlVURCFJUTlnRkQ3LRNt6Sc2XHByBwgHPaKLBUPJxAaNAL7kz2dAEhge1fk9dNXAexCdepwiIFodOQ==
+
 "@netlify/functions@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@netlify/functions/-/functions-1.4.0.tgz#027a2e5d54df5519ccbd14cf450231e97bbbf93a"
@@ -2734,6 +2739,11 @@ nanoid@^3.3.4:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
+nanostores@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/nanostores/-/nanostores-0.7.3.tgz#a9226e9be82b568bce04ac5a43aacb42aeb0a051"
+  integrity sha512-Y9vjY/amja27yjYxj/zlWh+gvXX6pSb8IeF2DK1vCNiYKlZclXbUrSE36gjd1F53+Avg5/bUzKuiej/v82HjPQ==
+
 next-tick@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
@@ -4101,6 +4111,11 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod-form-data@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/zod-form-data/-/zod-form-data-1.2.4.tgz#161967a60d351cc4e5e6af248e074b93ac74ec94"
+  integrity sha512-mI/rgItfvYQpvzEqGuBda/nuTHrMNoFZJ5cpiGLC5O3ZaVwI0XVo3/yTY2RreVMu57wGcDrfQcTRe5aMq2ijYA==
 
 zod@^3.17.3, zod@^3.20.2:
   version "3.20.2"

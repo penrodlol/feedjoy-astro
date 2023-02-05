@@ -1,26 +1,16 @@
 ---
-import Filter from '@components/Filter.astro';
-import Post from '@components/Post.astro';
+import Filter from '@components/Filter';
+import Posts from '@components/Posts';
 import Layout from '@layouts/Layout.astro';
-import { supabase } from '@lib/supabase';
-
-const { data: posts } = await supabase
-  .from('post')
-  .select()
-  .order('pub_date', { ascending: false })
-  .limit(30);
 ---
 
 <Layout>
   <div class="mt-fluid-2 flex flex-col gap-fluid-4">
     <section class="mx-auto w-full md:w-3/4">
-      <Filter />
+      <Filter client:load />
     </section>
     <section>
-      <!-- prettier-ignore -->
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {posts?.map((post) => <li><Post post={post} /></li>)}
-      </ul>
+      <Posts client:load />
     </section>
   </div>
 </Layout>
