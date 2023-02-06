@@ -2,8 +2,8 @@
   autoLaunch = false
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  from = "/"
+  to = "/pages/1"
   status = 200
   force = true
 
