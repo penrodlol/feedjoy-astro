@@ -24,9 +24,11 @@
     "zod-form-data": "^1.2.4"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^1.0.1",
     "@astrojs/tailwind": "^3.0.1",
     "@fontsource/nunito": "^4.5.12",
     "@types/node": "^18.11.18",
+    "astro-robots-txt": "^0.3.11",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.7.2",
     "prettier-plugin-tailwindcss": "^0.2.1",
