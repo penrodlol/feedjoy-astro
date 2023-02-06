@@ -5,6 +5,7 @@ import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
+  site: 'https://feedjoy.gg',
   integrations: [
     preact(),
     tailwind(),
