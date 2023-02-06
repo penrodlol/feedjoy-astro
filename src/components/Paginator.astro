@@ -1,0 +1,37 @@
+---
+import { ArrowLeft, ArrowRight } from 'lucide-preact';
+
+type Props = {
+  current: number;
+  isFirst: boolean;
+  isLast: boolean;
+  prefix?: string;
+};
+
+const { current, isFirst, isLast, prefix = '/' } = Astro.props;
+---
+
+<nav class="flex justify-between">
+  {
+    !isFirst && (
+      <a
+        href={`${prefix}pages/${current - 1}`}
+        class="group flex items-center gap-2"
+      >
+        <ArrowLeft class="stroke-brand-1" aria-hidden />
+        <span class="group-hover:text-brand-2">Previous</span>
+      </a>
+    )
+  }
+  {
+    !isLast && (
+      <a
+        href={`${prefix}pages/${current + 1}`}
+        class="group ml-auto flex items-center gap-2"
+      >
+        <span class="group-hover:text-brand-2">Next</span>
+        <ArrowRight class="stroke-brand-1" aria-hidden />
+      </a>
+    )
+  }
+</nav>

@@ -1,0 +1,18 @@
+---
+import type { GetSites } from '@lib/supabase/get-sites';
+
+type Props = { site: GetSites[number]['sites'][number] };
+
+const { site } = Astro.props;
+---
+
+<a
+  href={`/sites/${site.slug}/pages/1`}
+  class={`group relative flex flex-col rounded bg-2 py-4 px-6 shadow text-sm
+          hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-brand-1`}
+>
+  <span class="mb-1 text-brand-2 group-hover:text-brand-1">
+    {site.name}
+  </span>
+  <div class="font-semibold text-2"></div>
+</a>

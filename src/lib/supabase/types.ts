@@ -14,38 +14,41 @@ export interface Database {
           id: number;
           link: string;
           pub_date: string;
-          site: string;
+          site_id: number;
           title: string;
-          url_id: number;
         };
         Insert: {
           id?: number;
           link: string;
           pub_date: string;
-          site: string;
+          site_id: number;
           title: string;
-          url_id: number;
         };
         Update: {
           id?: number;
           link?: string;
           pub_date?: string;
-          site?: string;
+          site_id?: number;
           title?: string;
-          url_id?: number;
         };
       };
-      url: {
+      site: {
         Row: {
           id: number;
+          name: string;
+          slug: string;
           url: string;
         };
         Insert: {
           id?: number;
+          name: string;
+          slug: string;
           url: string;
         };
         Update: {
           id?: number;
+          name?: string;
+          slug?: string;
           url?: string;
         };
       };

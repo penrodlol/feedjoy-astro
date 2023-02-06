@@ -1,0 +1,38 @@
+---
+import Paginator from '@components/Paginator.astro';
+import Site from '@components/Site.astro';
+import Layout from '@layouts/Layout.astro';
+import { getSites } from '@lib/supabase/get-sites';
+
+export const getStaticPaths = async () => {
+  const pages = await getSites();
+  return pages.map((page) => ({
+    params: { page: page.current },
+    props: { page },
+  }));
+};
+
+type GetStaticPaths = Awaited<ReturnType<typeof getStaticPaths>>;
+type Props = NonNullable<GetStaticPaths>[number]['props'];
+
+const page = Astro.props.page;
+---
+
+<Layout>
+  <div class="mt-fluid-2 flex flex-col gap-fluid-4">
+    <section>
+      <!-- prettier-ignore -->
+      <ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {page.sites.map((site) => (<li><Site site={site} /></li>))}
+      </ul>
+    </section>
+    <section>
+      <Paginator
+        current={page.current}
+        isFirst={page.isFirst}
+        isLast={page.isLast}
+        prefix="/sites/"
+      />
+    </section>
+  </div>
+</Layout>

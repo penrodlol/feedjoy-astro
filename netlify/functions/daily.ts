@@ -14,7 +14,7 @@ export const handler: Handler = async () => {
   if (urls.error) return { statusCode: 500, body: urls.error.message };
 
   const parser = new Parser();
-  await parallel(5, urls.data, async ({ id: url_id, url }) =>
+  await parallel(5, urls.data, async ({ id: site_id, url }) =>
     parser.parseURL(url).then(({ title: site, link, items: posts }) => {
       if (!site || !link || !posts) return;
 
@@ -22,13 +22,12 @@ export const handler: Handler = async () => {
         posts
           .filter((post) => post.title && post.link && post.pubDate)
           .map((post) => ({
-            site,
             title: post.title,
             link: post.link,
             pub_date: post.pubDate,
-            url_id,
+            site_id,
           })),
-        { onConflict: 'url_id, link', ignoreDuplicates: true },
+        { onConflict: 'site_id, link', ignoreDuplicates: true },
       );
     }),
   );
