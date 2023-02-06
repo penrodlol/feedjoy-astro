@@ -4,17 +4,17 @@ import { parallel } from 'radash';
 import Parser from 'rss-parser';
 
 export const handler: Handler = async () => {
-  const url = process.env.PUBLIC_SUPABASE_URL;
-  const key = process.env.PUBLIC_SUPABASE_ANON_KEY;
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
   if (!url || !key) return { statusCode: 403 };
 
   const supabase = createClient(url, key);
 
-  const urls = await supabase.from('url').select();
-  if (urls.error) return { statusCode: 500, body: urls.error.message };
+  const { data: sites, error } = await supabase.from('site').select();
+  if (error) return { statusCode: 500, body: error.message };
 
   const parser = new Parser();
-  await parallel(5, urls.data, async ({ id: site_id, url }) =>
+  await parallel(5, sites, async ({ id: site_id, url }) =>
     parser.parseURL(url).then(({ title: site, link, items: posts }) => {
       if (!site || !link || !posts) return;
 

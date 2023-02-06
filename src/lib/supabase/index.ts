@@ -5,6 +5,6 @@ export type Site = Database['public']['Tables']['site']['Row'];
 export type Post = Database['public']['Tables']['post']['Row'];
 
 export default createClient<Database>(
-  import.meta.env.PUBLIC_SUPABASE_URL,
-  import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+  import.meta.env.SUPABASE_URL,
+  import.meta.env.SUPABASE_ANON_KEY,
 );
