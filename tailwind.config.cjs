@@ -29,9 +29,11 @@ module.exports = {
     require('tailwindcss-fluid-type'),
     ({ theme: t, addUtilities }) => {
       addUtilities({
-        '.hover-card:hover': {
-          outline: `solid ${t('outlineWidth.2')} ${t('colors.brand.1')}`,
-          outlineOffset: t('outlineOffset.4'),
+        '.hover-card': {
+          '&:hover': {
+            outline: `solid ${t('outlineWidth.2')} ${t('colors.brand.1')}`,
+            outlineOffset: t('outlineOffset.4'),
+          },
         },
       });
     },
