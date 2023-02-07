@@ -25,17 +25,5 @@ module.exports = {
     },
   },
   future: { hoverOnlyWhenSupported: true },
-  plugins: [
-    require('tailwindcss-fluid-type'),
-    ({ theme: t, addUtilities }) => {
-      addUtilities({
-        '.hover-card': {
-          '&:hover': {
-            outline: `solid ${t('outlineWidth.2')} ${t('colors.brand.1')}`,
-            outlineOffset: t('outlineOffset.4'),
-          },
-        },
-      });
-    },
-  ],
+  plugins: [require('tailwindcss-fluid-type')],
 };

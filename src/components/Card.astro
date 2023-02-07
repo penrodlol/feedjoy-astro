@@ -11,7 +11,8 @@ const external = href.startsWith('https://');
   href={href}
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
-  class="group flex h-full flex-col gap-4 rounded bg-2 p-2 pb-4 shadow text-sm hover-card"
+  class={`group flex h-full flex-col gap-4 rounded bg-2 p-2 pb-4 shadow text-sm
+          hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-brand-1`}
 >
   <div class="flex justify-between gap-4 rounded bg-1 p-2 shadow">
     <span class="text-brand-2 group-hover:text-brand-1">{title}</span>
