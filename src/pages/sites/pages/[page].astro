@@ -1,8 +1,10 @@
 ---
+import Card from '@components/Card.astro';
+import Date from '@components/Date.astro';
 import Paginator from '@components/Paginator.astro';
-import Site from '@components/Site.astro';
 import Layout from '@layouts/Layout.astro';
 import { getSites } from '@lib/supabase/get-sites';
+import { History, Library } from 'lucide-preact';
 
 export const getStaticPaths = async () => {
   const pages = await getSites();
@@ -21,9 +23,23 @@ const page = Astro.props.page;
 <Layout>
   <div class="mt-fluid-2 flex flex-col gap-fluid-4">
     <section>
-      <!-- prettier-ignore -->
       <ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {page.sites.map((site) => (<li><Site site={site} /></li>))}
+        {
+          page.sites.map((site) => (
+            <li>
+              <Card href={`/sites/${site.slug}/pages/1`} title={site.name}>
+                <p slot="first" class="flex items-center gap-2">
+                  <Library class="h-4 w-4 shrink-0" />
+                  <span>{site.total}</span>
+                </p>
+                <p slot="second" class="flex items-center gap-2">
+                  <History class="h-4 w-4 shrink-0" />
+                  <Date>{site.lastest}</Date>
+                </p>
+              </Card>
+            </li>
+          ))
+        }
       </ul>
     </section>
     <section>

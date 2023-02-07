@@ -1,8 +1,6 @@
 import { cluster } from 'radash';
 import supabase, { Post } from '.';
 
-export type GetSite = Awaited<ReturnType<typeof getSite>>;
-
 export const getSite = async () =>
   supabase
     .from('site')

@@ -1,8 +1,10 @@
 ---
+import Card from '@components/Card.astro';
+import Date from '@components/Date.astro';
 import Paginator from '@components/Paginator.astro';
-import Post from '@components/Post.astro';
 import Layout from '@layouts/Layout.astro';
 import { getSite } from '@lib/supabase/get-site';
+import { Calendar, User } from 'lucide-preact';
 
 export const getStaticPaths = async () => {
   const pages = await getSite();
@@ -28,12 +30,16 @@ const { site, page } = Astro.props;
         {
           page.posts.map((post) => (
             <li>
-              <Post
-                siteName={site.name}
-                link={post.link}
-                title={post.title}
-                pubDate={post.pub_date}
-              />
+              <Card href={post.link} title={post.title}>
+                <p slot="first" class="flex items-center gap-2">
+                  <User class="h-4 w-4 shrink-0" />
+                  <span>{site.name}</span>
+                </p>
+                <p slot="second" class="flex items-center gap-2">
+                  <Calendar class="h-4 w-4 shrink-0" />
+                  <Date>{post.pub_date}</Date>
+                </p>
+              </Card>
             </li>
           ))
         }
