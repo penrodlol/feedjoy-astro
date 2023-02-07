@@ -5,6 +5,7 @@ export const getSite = async () =>
   supabase
     .from('site')
     .select('*, post(*)')
+    .order('pub_date', { ascending: false, foreignTable: 'post' })
     .then(({ data, error }) => {
       if (error) throw new Error(error.message);
 
