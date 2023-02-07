@@ -4,15 +4,21 @@ import '@fontsource/nunito/600.css';
 import '@fontsource/nunito/800.css';
 import 'tailwindcss/tailwind.css';
 
+type Props = { title?: string };
+
 const logo = await import('@public/logo.svg?raw');
+const { title = 'feedjoy' } = Astro.props;
 ---
 
 <html lang="en" class="font-extrabold tracking-wide">
   <head>
+    <title>{title}</title>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <title>feedjoy</title>
+    <meta name="title" content={title} />
+    <meta name="description" content="a minimal rss feed congregator" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href={new URL(Astro.url.pathname, Astro.site)} rel="canonical" />
   </head>
   <body
     class={`flex min-h-screen flex-col bg-1 text-1 text-base
