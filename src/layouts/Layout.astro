@@ -6,7 +6,7 @@ import 'tailwindcss/tailwind.css';
 
 type Props = { title?: string };
 
-const logo = await import('@public/logo.svg?raw');
+const banner = await import('@public/banner.svg?raw');
 const { title = 'feedjoy' } = Astro.props;
 ---
 
@@ -26,7 +26,7 @@ const { title = 'feedjoy' } = Astro.props;
   >
     <header class="flex items-center gap-6 py-2">
       <a href="/" class="mr-auto h-16 w-28" aria-label="Home">
-        <Fragment set:html={logo.default} aria-hidden />
+        <Fragment set:html={banner.default} aria-hidden />
       </a>
       <Anchor href="/sites/pages/1">sites</Anchor>
       <Anchor href="/about">about</Anchor>
