@@ -4,9 +4,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: { sans: ['Nunito'] },
-      textColor: { 1: '#E2E4ED', 2: '#B6BAC8' },
-      backgroundColor: { 1: '#0F1014', 2: '#1F1F24' },
-      colors: { brand: { 1: '#05eeb6', 2: '#aeeedf' } },
       spacing: {
         'fluid-1': 'clamp(0.25rem, calc(-0.09rem + 1.71vw), 1.13rem)',
         'fluid-2': 'clamp(0.5rem, calc(0.11rem + 1.95vw), 1.5rem)',
@@ -25,5 +22,27 @@ module.exports = {
     },
   },
   future: { hoverOnlyWhenSupported: true },
-  plugins: [require('tailwindcss-fluid-type')],
+  plugins: [
+    require('tailwindcss-fluid-type'),
+    require('tailwindcss-themer')({
+      themes: [
+        {
+          name: 'light-theme',
+          extend: {
+            textColor: { 1: '#0F1014' },
+            backgroundColor: { 1: '#f7f1e2', 2: '#EAE2CE' },
+            colors: { brand: { 1: '#4a26b0', 2: '#260f68' } },
+          },
+        },
+        {
+          name: 'dark-theme',
+          extend: {
+            textColor: { 1: '#E2E4ED' },
+            backgroundColor: { 1: '#0F1014', 2: '#1F1F24' },
+            colors: { brand: { 1: '#e2d8ff', 2: '#a898d5' } },
+          },
+        },
+      ],
+    }),
+  ],
 };

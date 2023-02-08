@@ -34,6 +34,7 @@
     "prettier-plugin-tailwindcss": "^0.2.1",
     "slugify": "^1.6.5",
     "tailwindcss": "^3.2.4",
-    "tailwindcss-fluid-type": "^2.0.3"
+    "tailwindcss-fluid-type": "^2.0.3",
+    "tailwindcss-themer": "^2.0.3"
   }
 }

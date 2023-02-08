@@ -1,16 +1,17 @@
 ---
 import Anchor from '@components/Anchor.astro';
+import Theme from '@components/Theme.astro';
 import '@fontsource/nunito/600.css';
 import '@fontsource/nunito/800.css';
 import 'tailwindcss/tailwind.css';
 
+const banner = await import('@public/banner.svg?raw');
 type Props = { title?: string };
 
-const banner = await import('@public/banner.svg?raw');
 const { title = 'feedjoy' } = Astro.props;
 ---
 
-<html lang="en" class="font-extrabold tracking-wide">
+<html lang="en">
   <head>
     <title>{title}</title>
     <meta charset="utf-8" />
@@ -21,8 +22,8 @@ const { title = 'feedjoy' } = Astro.props;
     <link href={new URL(Astro.url.pathname, Astro.site)} rel="canonical" />
   </head>
   <body
-    class={`flex min-h-screen flex-col bg-1 text-1 text-base
-            max-w-screen-lg mx-auto px-fluid-4`}
+    class={`flex min-h-screen flex-col bg-1 text-1 font-extrabold
+            tracking-wide text-base max-w-screen-lg mx-auto px-fluid-4`}
   >
     <header class="flex items-center gap-6 py-2">
       <a href="/" class="mr-auto h-16 w-28" aria-label="Home">
@@ -30,6 +31,7 @@ const { title = 'feedjoy' } = Astro.props;
       </a>
       <Anchor href="/sites/pages/1">sites</Anchor>
       <Anchor href="/about">about</Anchor>
+      <Theme />
     </header>
     <main class="flex-1 pb-8 motion-safe:animate-fade-in"><slot /></main>
     <footer class="self-center p-2 text-center text-sm">
