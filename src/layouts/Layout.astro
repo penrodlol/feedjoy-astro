@@ -29,11 +29,11 @@ const { title = 'feedjoy' } = Astro.props;
       <a href="/" class="mr-auto h-16 w-28" aria-label="Home">
         <Fragment set:html={banner.default} aria-hidden />
       </a>
-      <Anchor href="/sites/pages/1">sites</Anchor>
-      <Anchor href="/about">about</Anchor>
+      <Anchor href="/sites/pages/1" nostyle>sites</Anchor>
+      <Anchor href="/about" nostyle>about</Anchor>
       <Theme />
     </header>
-    <main class="flex-1 pb-8 motion-safe:animate-fade-in"><slot /></main>
+    <main class="flex-1 pb-4 motion-safe:animate-fade-in"><slot /></main>
     <footer class="self-center p-2 text-center text-sm">
       <p>created by: christian penrod ©{new Date().getUTCFullYear()}</p>
     </footer>

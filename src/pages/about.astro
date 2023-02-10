@@ -1,5 +1,29 @@
 ---
+import Anchor from '@components/Anchor.astro';
 import Layout from '@layouts/Layout.astro';
+
+const banner = await import('@public/banner.svg?raw');
 ---
 
-<Layout title="feedjoy | about" />
+<Layout title="feedjoy | about">
+  <section
+    class="mx-auto mt-fluid-6 max-w-screen-sm rounded bg-2 px-fluid-4 pb-fluid-4 shadow"
+  >
+    <div class="mb-4 w-64"><Fragment set:html={banner.default} /></div>
+    <div class="flex flex-col gap-6 font-semibold leading-loose">
+      <p>
+        feedjoy is a minimal tech blog RSS feed congregator. It serves as a
+        centralized proxy for blog posts I personally enjoy.
+      </p>
+      <p>
+        On a daily basis, feedjoy fetches any new or updated posts across the
+        provided RSS feeds. Providing the ability to keep up with the latest
+        content.
+      </p>
+      <p>
+        All posts are archived under their respective sites and can be accessed
+        via the <Anchor href="/sites/pages/1">sites</Anchor> page.
+      </p>
+    </div>
+  </section>
+</Layout>
