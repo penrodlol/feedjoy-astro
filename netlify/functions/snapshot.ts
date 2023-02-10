@@ -1,11 +1,12 @@
 import type { Handler } from '@netlify/functions';
-import puppeteer from 'puppeteer';
+import chromium from 'chrome-aws-lambda';
 
 export const handler: Handler = async () => {
-  const browser = await puppeteer.launch({
-    headless: true,
+  const browser = await chromium.puppeteer.launch({
+    executablePath: await chromium.executablePath,
+    args: chromium.args,
     defaultViewport: { width: 1920, height: 1080 },
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    headless: chromium.headless,
   });
 
   const page = await browser.newPage();
