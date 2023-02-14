@@ -4,7 +4,8 @@ import supabase, { Post } from '.';
 export const getSites = async () =>
   supabase
     .from('site')
-    .select('*, post (pub_date)')
+    .select('*, post!inner(pub_date)')
+    .not('post.pub_date', 'is', null)
     .order('name', { ascending: true })
     .then(({ data, error }) => {
       if (error) throw new Error(error.message);
