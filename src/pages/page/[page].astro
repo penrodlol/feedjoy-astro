@@ -18,7 +18,7 @@ const { data, error } = await supabase
 if (error) return Astro.redirect('/');
 if (!data.length) return Astro.redirect('/page/1');
 
-// Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
 
 const posts = data.map((post) => ({ ...post, site: post.site as Site }));
 ---
