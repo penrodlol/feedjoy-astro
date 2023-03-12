@@ -1,14 +1,10 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { ExternalLink, Link } from 'lucide-preact';
 
-type Props = HTMLAttributes<'a'> & { nostyle?: boolean };
+type Props = HTMLAttributes<'a'>;
 
-const { href, target, nostyle, ...props } = Astro.props;
+const { href, target, class: className = '', ...props } = Astro.props;
 const external = String(href).startsWith('https://');
-const styles = `text-brand-1 hover:after:absolute hover:after:right-0 hover:after:left-0 
-                hover:after:bottom-[2px] hover:after:rounded-md hover:after:border-t-[0.2rem] 
-                hover:after:border-solid hover:after:border-brand-2 hover:after:content-[""]`;
 ---
 
 <a
@@ -16,11 +12,7 @@ const styles = `text-brand-1 hover:after:absolute hover:after:right-0 hover:afte
   href={href}
   target={external ? '_blank' : target}
   rel={external ? 'nofollow noopener noreferrer' : target}
-  class={`cursor-pointer relative inline-flex items-center gap-1 rounded-sm no-underline
-          hover:text-brand-1 focus-visible:text-brand-1
-          ${!nostyle ? styles : ''}}`}
+  class={`inline-flex items-center gap-2 max-w-max hover:text-brand-2 ${className}`}
 >
-  <span><slot /></span>
-  {external && !nostyle && <ExternalLink class="h-5 w-5 -translate-y-[1px]" />}
-  {!external && !nostyle && <Link class="h-5 w-5 -translate-y-[1px]" />}
+  <slot />
 </a>

@@ -1,5 +1,40 @@
 ---
+import Anchor from '@components/Anchor.astro';
+import Number from '@components/Number.astro';
 import Layout from '@layouts/Layout.astro';
+import supabase from '@lib/supabase';
+import { ArrowRight } from 'lucide-preact';
+
+export const prerender = true;
+
+const root = await supabase.rpc('get_root_summary').select().single();
+const { postweek, totalposts, totalsites } = root.data!;
 ---
 
-<Layout />
+<Layout>
+  <div class="my-fluid-6 mx-auto flex max-w-screen-sm flex-col gap-fluid-6">
+    <section>
+      <h1 class="mb-4 font-2 text-9xl">feedjoy</h1>
+      <p class="mb-fluid-4 text-2 text-2xl">a minimal rss feed congregator</p>
+      <Anchor href="/page/1" class="text-brand-1 font-3 text-xl">
+        Start Reading <ArrowRight class="h-8 w-8" aria-hidden />
+      </Anchor>
+    </section>
+    <section class="rounded bg-2 py-fluid-2 px-fluid-3 shadow">
+      <ul class="flex flex-wrap justify-between gap-10">
+        <li>
+          <h3 class="font-1">Posts this week</h3>
+          <Number class="font-3 text-brand-1 text-2xl">{postweek}</Number>
+        </li>
+        <li>
+          <h3 class="font-1">Total posts</h3>
+          <Number class="font-3 text-brand-1 text-2xl">{totalposts}</Number>
+        </li>
+        <li>
+          <h3 class="font-1">Sites tracked</h3>
+          <Number class="font-3 text-brand-1 text-2xl">{totalsites}</Number>
+        </li>
+      </ul>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,64 @@
+---
+import Card from '@components/Card.astro';
+import Date from '@components/Date.astro';
+import Paginator from '@components/Paginator.astro';
+import { paramsSchema } from '@const/params';
+import Layout from '@layouts/Layout.astro';
+import supabase, { type Post } from '@lib/supabase';
+import { User } from 'lucide-preact';
+import { z } from 'zod';
+
+const params = paramsSchema
+  .merge(z.object({ site: z.string() }))
+  .safeParse(Astro.params);
+if (!params.success) return Astro.redirect('/sites/pages/1');
+
+const { data: site, error } = await supabase
+  .from('site')
+  .select('*, post(*)')
+  .eq('slug', params.data.site)
+  .order('pub_date', { ascending: false, foreignTable: 'post' })
+  .range((params.data.page - 1) * 30, (params.data.page - 1) * 30 + 29, {
+    foreignTable: 'post',
+  })
+  .single();
+if (error) return Astro.redirect('/sites');
+
+Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+
+const posts = site.post as Array<Post>;
+if (!posts.length) return Astro.redirect(`/sites/${params.data.slug}/page/1`);
+---
+
+<Layout title="feedjoy | sites">
+  <div class="mt-fluid-4 flex flex-col gap-fluid-4">
+    <h1 class="text-brand-1 text-2xl">{site.name}</h1>
+    <section>
+      <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {
+          posts.map((post) => (
+            <li>
+              <Card href={post.link} title={post.title}>
+                <p slot="first" class="flex items-center gap-2">
+                  <User class="stroke-brand-1 h-4 w-4 shrink-0" />
+                  <span>{site.name}</span>
+                </p>
+                <p slot="second" class="text-2 flex items-center gap-2">
+                  <Date>{post.pub_date}</Date>
+                </p>
+              </Card>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section>
+      <Paginator
+        current={params.data.page}
+        isFirst={params.data.page === 1}
+        isLast={posts.length < 30}
+        prefix={`/sites/${site.slug}/`}
+      />
+    </section>
+  </div>
+</Layout>

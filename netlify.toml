@@ -1,11 +1,5 @@
 [dev]
   autoLaunch = false
 
-[[redirects]]
-  from = "/"
-  to = "/pages/1"
-  status = 200
-  force = true
-
 [functions."daily"]
   schedule = "@daily"

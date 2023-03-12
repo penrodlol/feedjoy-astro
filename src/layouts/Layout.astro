@@ -1,13 +1,13 @@
 ---
 import Anchor from '@components/Anchor.astro';
-import Theme from '@components/Theme.astro';
-import '@fontsource/nunito/600.css';
-import '@fontsource/nunito/800.css';
+import '@fontsource/outfit/200.css';
+import '@fontsource/outfit/400.css';
+import '@fontsource/outfit/600.css';
 import 'tailwindcss/tailwind.css';
 
-const banner = await import('@public/banner.svg?raw');
 type Props = { title?: string };
 
+const logo = await import('@public/logo.svg?raw');
 const { title = 'feedjoy' } = Astro.props;
 ---
 
@@ -18,23 +18,26 @@ const { title = 'feedjoy' } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="title" content={title} />
     <meta name="description" content="a minimal rss feed congregator" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link href={new URL(Astro.url.pathname, Astro.site)} rel="canonical" />
   </head>
   <body
-    class={`flex min-h-screen flex-col bg-1 text-1 font-extrabold
-            tracking-wide text-base max-w-screen-lg mx-auto px-fluid-4`}
+    class={`flex min-h-screen flex-col bg-1 text-1
+            text-base max-w-screen-lg mx-auto px-fluid-4`}
   >
-    <header class="flex items-center gap-6 py-2">
-      <a href="/" class="mr-auto h-16 w-28" aria-label="Home">
-        <Fragment set:html={banner.default} aria-hidden />
-      </a>
-      <Anchor href="/sites/pages/1" nostyle>sites</Anchor>
-      <Anchor href="/about" nostyle>about</Anchor>
-      <Theme />
+    <header class="flex justify-between py-2">
+      <Anchor href="/" class="w-7 h-7" aria-label="Home">
+        <Fragment set:html={logo.default} aria-hidden />
+      </Anchor>
+      <nav>
+        <ul class="flex gap-6">
+          <li><Anchor href="/sites/page/1">sites</Anchor></li>
+          <li><Anchor href="/about">about</Anchor></li>
+        </ul>
+      </nav>
     </header>
-    <main class="flex-1 pb-4 motion-safe:animate-fade-in"><slot /></main>
-    <footer class="self-center p-2 text-center text-sm">
+    <main class="flex-1 pb-fluid-4 motion-safe:animate-fade-in"><slot /></main>
+    <footer class="p-2 text-center text-sm">
       <p>created by: christian penrod ©{new Date().getUTCFullYear()}</p>
     </footer>
   </body>

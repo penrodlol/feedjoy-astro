@@ -1,0 +1,62 @@
+---
+import Card from '@components/Card.astro';
+import Date from '@components/Date.astro';
+import Number from '@components/Number.astro';
+import Paginator from '@components/Paginator.astro';
+import { paramsSchema } from '@const/params';
+import Layout from '@layouts/Layout.astro';
+import supabase, { type Post } from '@lib/supabase';
+import { History, Library } from 'lucide-preact';
+
+const params = paramsSchema.safeParse(Astro.params);
+if (!params.success) return Astro.redirect('/sites/pages/1');
+
+const { data, error } = await supabase
+  .from('site')
+  .select('*, post!inner(pub_date)')
+  .not('post.pub_date', 'is', null)
+  .order('name', { ascending: true })
+  .order('pub_date', { ascending: false, foreignTable: 'post' })
+  .range((params.data.page - 1) * 30, (params.data.page - 1) * 30 + 29);
+if (error) return Astro.redirect('/');
+if (!data.length) return Astro.redirect('/sites/pages/1');
+
+Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+
+const sites = data.map((site) => ({ ...site, post: site.post as Post[] }));
+---
+
+<Layout title="feedjoy | sites">
+  <div class="mt-fluid-4 flex flex-col gap-fluid-4">
+    <section>
+      <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {
+          sites.map((site) => (
+            <li>
+              <Card href={`/sites/${site.slug}/page/1`} title={site.name}>
+                <p slot="first" class="flex items-center gap-2">
+                  <Library class="stroke-brand-1 h-4 w-4 shrink-0" />
+                  <span>
+                    <Number>{site.post.length}</Number> posts
+                  </span>
+                </p>
+                <p slot="second" class="text-2 flex items-center gap-2">
+                  <History class="h-4 w-4 shrink-0" />
+                  <Date>{site.post[0]?.pub_date}</Date>
+                </p>
+              </Card>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section>
+      <Paginator
+        current={params.data.page}
+        isFirst={params.data.page === 1}
+        isLast={sites.length < 30}
+        prefix="/sites/"
+      />
+    </section>
+  </div>
+</Layout>

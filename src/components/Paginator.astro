@@ -15,7 +15,7 @@ const { current, isFirst, isLast, prefix = '/' } = Astro.props;
   {
     !isFirst && (
       <a
-        href={`${prefix}pages/${current - 1}`}
+        href={`${prefix}page/${current - 1}`}
         class="group flex items-center gap-2"
       >
         <ArrowLeft class="stroke-brand-1" aria-hidden />
@@ -26,7 +26,7 @@ const { current, isFirst, isLast, prefix = '/' } = Astro.props;
   {
     !isLast && (
       <a
-        href={`${prefix}pages/${current + 1}`}
+        href={`${prefix}page/${current + 1}`}
         class="group ml-auto flex items-center gap-2"
       >
         <span class="group-hover:text-brand-1">next</span>

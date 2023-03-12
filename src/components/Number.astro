@@ -1,0 +1,7 @@
+---
+const props = Astro.props;
+const number = Number(await Astro.slots.render('default'));
+const formatter = new Intl.NumberFormat('en', { notation: 'compact' });
+---
+
+<span {...props}>{formatter.format(number)}</span>

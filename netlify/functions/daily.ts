@@ -2,6 +2,7 @@ import type { Handler } from '@netlify/functions';
 import { createClient } from '@supabase/supabase-js';
 import { parallel } from 'radash';
 import Parser from 'rss-parser';
+import slugify from 'slugify';
 
 export const handler: Handler = async () => {
   const url = process.env.SUPABASE_URL;
@@ -26,6 +27,7 @@ export const handler: Handler = async () => {
             link: post.link,
             pub_date: post.pubDate,
             site_id,
+            slug: slugify(post.title as string, { strict: true, lower: true }),
           })),
         { onConflict: 'site_id, link', ignoreDuplicates: true },
       );
