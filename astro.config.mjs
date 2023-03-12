@@ -1,4 +1,4 @@
-import netlify from '@astrojs/netlify/functions';
+import netlify from '@astrojs/netlify/edge-functions';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
