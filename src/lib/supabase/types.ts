@@ -70,6 +70,12 @@ export interface Database {
         };
         Returns: undefined;
       };
+      bulk_update_summaries: {
+        Args: {
+          summaries: Json;
+        };
+        Returns: undefined;
+      };
       get_root_summary: {
         Args: Record<PropertyKey, never>;
         Returns: {
