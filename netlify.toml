@@ -1,5 +1,2 @@
 [dev]
   autoLaunch = false
-
-[functions."daily"]
-  schedule = "@daily"
