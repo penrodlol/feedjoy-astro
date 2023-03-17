@@ -4,10 +4,8 @@ import { createClient } from '@supabase/supabase-js';
 import { getPosts } from './get-posts';
 import { getSummaries } from './get-summaries';
 
-const supabase = createClient<Database>(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE!,
-);
+const { SUPABASE_URL, SUPABASE_SERVICE_ROLE } = process.env;
+const supabase = createClient<Database>(SUPABASE_URL!, SUPABASE_SERVICE_ROLE!);
 
 export const handler = schedule('@daily', async () => {
   const sites = await supabase.from('site').select();
