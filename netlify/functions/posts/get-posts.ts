@@ -1,7 +1,6 @@
 import type { Site } from '@lib/supabase';
 import { flat, parallel } from 'radash';
 import Parser from 'rss-parser';
-import slugify from 'slugify';
 
 export const getPosts = async (sites: Array<Site>) => {
   const parser = new Parser();
@@ -17,7 +16,6 @@ export const getPosts = async (sites: Array<Site>) => {
         title: post.title as string,
         link: post.link as string,
         pub_date: post.pubDate as string,
-        slug: slugify(post.title as string, { strict: true, lower: true }),
       }));
   });
 

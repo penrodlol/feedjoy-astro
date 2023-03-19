@@ -18,17 +18,15 @@ export interface Database {
           slug: string;
           summary: string | null;
           title: string;
-          topic: string | null;
         };
         Insert: {
           id?: number;
           link: string;
           pub_date: string;
           site_id: number;
-          slug: string;
+          slug?: string;
           summary?: string | null;
           title: string;
-          topic?: string | null;
         };
         Update: {
           id?: number;
@@ -38,7 +36,6 @@ export interface Database {
           slug?: string;
           summary?: string | null;
           title?: string;
-          topic?: string | null;
         };
       };
       site: {
@@ -51,7 +48,7 @@ export interface Database {
         Insert: {
           id?: number;
           name: string;
-          slug: string;
+          slug?: string;
           url: string;
         };
         Update: {
