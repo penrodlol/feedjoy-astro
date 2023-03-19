@@ -30,7 +30,10 @@ const posts = data.map((post) => ({ ...post, site: post.site as Site }));
         {
           posts.map((post) => (
             <li>
-              <Card href={post.link} title={post.title}>
+              <Card
+                href={`/sites/${post.site.slug}/${post.slug}`}
+                title={post.title}
+              >
                 <p slot="first" class="flex items-center gap-2">
                   <User class="stroke-brand-1 h-4 w-4 shrink-0" />
                   <span>{post.site.name}</span>

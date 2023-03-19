@@ -18,6 +18,7 @@ export interface Database {
           slug: string;
           summary: string | null;
           title: string;
+          topic: string | null;
         };
         Insert: {
           id?: number;
@@ -27,6 +28,7 @@ export interface Database {
           slug: string;
           summary?: string | null;
           title: string;
+          topic?: string | null;
         };
         Update: {
           id?: number;
@@ -36,6 +38,7 @@ export interface Database {
           slug?: string;
           summary?: string | null;
           title?: string;
+          topic?: string | null;
         };
       };
       site: {
@@ -56,23 +59,6 @@ export interface Database {
           name?: string;
           slug?: string;
           url?: string;
-        };
-      };
-      topic: {
-        Row: {
-          created_at: string;
-          id: number;
-          name: string;
-        };
-        Insert: {
-          created_at?: string;
-          id?: number;
-          name: string;
-        };
-        Update: {
-          created_at?: string;
-          id?: number;
-          name?: string;
         };
       };
     };

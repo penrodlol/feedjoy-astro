@@ -1,0 +1,48 @@
+---
+import Anchor from '@components/Anchor.astro';
+import Date from '@components/Date.astro';
+import Layout from '@layouts/Layout.astro';
+import supabase, { Site } from '@lib/supabase';
+import { Calendar, ExternalLink, User } from 'lucide-preact';
+import { z } from 'zod';
+
+const params = z
+  .object({ site: z.string(), post: z.string() })
+  .safeParse(Astro.params);
+if (!params.success) return Astro.redirect('/sites/page/1');
+
+const { data: post, error } = await supabase
+  .from('post')
+  .select('*, site (*)')
+  .eq('site.slug', params.data.site)
+  .eq('slug', params.data.post)
+  .single();
+if (error) return Astro.redirect('/sites/page/1');
+
+Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+
+const site = post.site as Site;
+---
+
+<Layout title="feedjoy | post">
+  <section class="mx-auto mt-fluid-6 max-w-screen-sm">
+    <h1 class="mb-3 font-3 text-brand-1 text-xl">{post.title}</h1>
+    <div class="flex flex-wrap items-center gap-10 text-2 text-sm">
+      <div class="flex items-center gap-2">
+        <User class="h-5 w-5" aria-hidden />
+        <span>{site.name}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <Calendar class="h-5 w-5" aria-hidden />
+        <Date>{post.pub_date}</Date>
+      </div>
+    </div>
+    <div class="my-5 h-1.5 w-5/6 rounded bg-2"></div>
+    <p class="mb-6 leading-loose text-sm">{post.summary}</p>
+    <div class="flex justify-end">
+      <Anchor href={post.link} class="text-brand-1">
+        Read Post <ExternalLink />
+      </Anchor>
+    </div>
+  </section>
+</Layout>
