@@ -1,39 +1,54 @@
 ---
 import Anchor from '@components/Anchor.astro';
-import Number from '@components/Number.astro';
+import Card from '@components/Card.astro';
+import Date from '@components/Date.astro';
 import Layout from '@layouts/Layout.astro';
-import supabase from '@lib/supabase';
-import { ArrowRight } from 'lucide-preact';
+import supabase, { type Site } from '@lib/supabase';
+import { ArrowRight, User } from 'lucide-preact';
 
-export const prerender = true;
+const { data, error } = await supabase
+  .from('post')
+  .select('*, site (*)')
+  .order('pub_date', { ascending: false })
+  .limit(6);
+if (error) throw new Error(error.message);
 
-const root = await supabase.rpc('get_root_summary').select().single();
-const { postweek, totalposts, totalsites } = root.data!;
+Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+
+const posts = data.map((post) => ({ ...post, site: post.site as Site }));
 ---
 
 <Layout>
-  <div class="my-fluid-6 mx-auto flex max-w-screen-sm flex-col gap-fluid-6">
+  <div class="my-fluid-6 mx-auto flex max-w-screen-md flex-col gap-fluid-6">
     <section>
       <h1 class="mb-4 font-2 text-9xl">feedjoy</h1>
       <p class="mb-fluid-4 text-2 text-2xl">a minimal rss feed congregator</p>
-      <Anchor href="/page/1" class="text-brand-1 font-3 text-xl">
-        view posts <ArrowRight class="h-8 w-8 shrink-0" aria-hidden />
+      <Anchor href="/page/1" class="font-3 text-brand-1 text-xl">
+        view all posts <ArrowRight class="h-8 w-8 shrink-0" aria-hidden />
       </Anchor>
+      <div class="mt-fluid-4 h-1.5 w-5/6 rounded bg-2"></div>
     </section>
-    <section class="rounded bg-2 py-fluid-2 px-fluid-3 shadow">
-      <ul class="flex flex-wrap justify-between gap-y-2 gap-x-10">
-        <li>
-          <h3 class="font-1">posts this week</h3>
-          <Number class="font-3 text-brand-1 text-2xl">{postweek}</Number>
-        </li>
-        <li>
-          <h3 class="font-1">total posts</h3>
-          <Number class="font-3 text-brand-1 text-2xl">{totalposts}</Number>
-        </li>
-        <li>
-          <h3 class="font-1">sites tracked</h3>
-          <Number class="font-3 text-brand-1 text-2xl">{totalsites}</Number>
-        </li>
+    <section class="flex flex-col gap-fluid-3">
+      <h2 class="text-xl">Recent Posts</h2>
+      <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {
+          posts.map((post) => (
+            <li>
+              <Card
+                href={`/sites/${post.site.slug}/${post.slug}`}
+                title={post.title}
+              >
+                <p slot="first" class="flex items-center gap-2">
+                  <User class="stroke-brand-1 h-4 w-4 shrink-0" />
+                  <span>{post.site.name}</span>
+                </p>
+                <p slot="second" class="text-2 flex items-center gap-2">
+                  <Date>{post.pub_date}</Date>
+                </p>
+              </Card>
+            </li>
+          ))
+        }
       </ul>
     </section>
   </div>
