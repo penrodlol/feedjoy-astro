@@ -2,9 +2,6 @@ name: Get Posts
 
 on:
   workflow_dispatch:
-  commit:
-    branches:
-      - feature/action
   schedule:
     - cron: '0 20 * * *'
 
