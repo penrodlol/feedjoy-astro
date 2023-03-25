@@ -11,6 +11,7 @@ jobs:
     env:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     steps:
       - uses: actions/checkout@v3
 
@@ -22,4 +23,7 @@ jobs:
         run: yarn install
 
       - name: Fetch Posts
-        run: npx ts-node --esm scripts/posts.ts
+        run: npx ts-node --esm .github/scripts/posts.ts
+
+      - name: Fetch Summaries
+        run: npx ts-node --esm .github/scripts/summaries.ts
