@@ -20,7 +20,8 @@ if (posts.error) throw posts.error;
 const summaries = sift(
   await parallel(15, posts.data, async (post) => {
     const $ = load(await fetch(post.link).then((res) => res.text()));
-    const text = $('article p').children().remove().end().text().slice(0, 3800);
+    const root = $('article').length > 0 ? $('article p') : $('body p');
+    const text = root.children().remove().end().text().slice(0, 3800);
     const payload = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages: [
