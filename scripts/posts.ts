@@ -1,15 +1,14 @@
 import type { Database } from '@lib/supabase/types';
-import type { BackgroundHandler } from '@netlify/functions';
 import { createClient } from '@supabase/supabase-js';
 import { flat, parallel } from 'radash';
 import Parser from 'rss-parser';
 
-const { ACCESS_TOKEN, SUPABASE_URL, SUPABASE_SERVICE_ROLE } = process.env;
-const supabase = createClient<Database>(SUPABASE_URL!, SUPABASE_SERVICE_ROLE!);
+const supabase = createClient<Database>(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE!,
+);
 
-export const handler: BackgroundHandler = async ({ headers }) => {
-  if (headers['X-Access-Token'] !== ACCESS_TOKEN) return;
-
+(async () => {
   const sites = await supabase.from('site').select();
   if (sites.error) return console.error(sites.error);
 
@@ -36,4 +35,4 @@ export const handler: BackgroundHandler = async ({ headers }) => {
     .upsert(posts, { onConflict: 'site_id, link', ignoreDuplicates: true });
 
   if (payload.error) return console.error(payload.error);
-};
+})();
