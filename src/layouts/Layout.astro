@@ -3,10 +3,10 @@ import Anchor from '@components/Anchor.astro';
 import '@fontsource/outfit/200.css';
 import '@fontsource/outfit/400.css';
 import '@fontsource/outfit/600.css';
+import { Home } from 'lucide-preact';
 
 type Props = { title?: string };
 
-const logo = await import('@public/logo.svg?raw');
 const { title = 'feedjoy' } = Astro.props;
 ---
 
@@ -24,12 +24,14 @@ const { title = 'feedjoy' } = Astro.props;
     class={`flex min-h-screen flex-col bg-1 text-1
             text-base max-w-screen-lg mx-auto px-fluid-4`}
   >
-    <header class="flex justify-between py-2">
-      <Anchor href="/" class="w-7 h-7" aria-label="Home">
-        <Fragment set:html={logo.default} aria-hidden />
+    <header
+      class="m-4 mx-auto flex w-full max-w-screen-md justify-between rounded bg-2 py-2 px-4 shadow"
+    >
+      <Anchor href="/" aria-label="Home">
+        <Home class="h-5 w-5" aria-hidden />
       </Anchor>
       <nav>
-        <ul class="flex gap-6">
+        <ul class="flex gap-6 text-sm">
           <li><Anchor href="/page/1">posts</Anchor></li>
           <li><Anchor href="/sites/page/1">sites</Anchor></li>
           <li><Anchor href="/about">about</Anchor></li>

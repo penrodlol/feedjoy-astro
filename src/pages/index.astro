@@ -2,34 +2,65 @@
 import Anchor from '@components/Anchor.astro';
 import Card from '@components/Card.astro';
 import Date from '@components/Date.astro';
+import Number from '@components/Number.astro';
 import Layout from '@layouts/Layout.astro';
 import supabase, { type Site } from '@lib/supabase';
-import { ArrowRight, User } from 'lucide-preact';
+import { ArrowRight, Calendar, Globe, Library, User } from 'lucide-preact';
 
-const { data, error } = await supabase
+const _root = await supabase.rpc('get_root_summary').single();
+if (_root.error) throw new Error(_root.error.message);
+
+const _posts = await supabase
   .from('post')
   .select('*, site (*)')
   .order('pub_date', { ascending: false })
   .limit(6);
-if (error) throw new Error(error.message);
+if (_posts.error) throw new Error(_posts.error.message);
 
 Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
 
-const posts = data.map((post) => ({ ...post, site: post.site as Site }));
+const { totalposts, totalsites, postweek } = _root.data;
+const posts = _posts.data.map((post) => ({ ...post, site: post.site as Site }));
 ---
 
 <Layout>
-  <div class="my-fluid-6 mx-auto flex max-w-screen-md flex-col gap-fluid-6">
+  <div class="my-fluid-4 mx-auto flex max-w-screen-md flex-col gap-fluid-3">
     <section>
-      <h1 class="mb-4 font-2 text-9xl">feedjoy</h1>
-      <p class="mb-fluid-4 text-2 text-2xl">a minimal rss feed congregator</p>
-      <Anchor href="/page/1" class="font-3 text-brand-1 text-xl">
+      <h1 class="mb-4 font-2 text-7xl">feedjoy</h1>
+      <p class="mb-fluid-4 text-2 text-xl">a minimal rss feed congregator</p>
+      <Anchor href="/page/1" class="font-3 text-brand-1">
         view all posts <ArrowRight class="h-8 w-8 shrink-0" aria-hidden />
       </Anchor>
-      <div class="mt-fluid-4 h-1.5 w-5/6 rounded bg-2"></div>
     </section>
+    <div class="h-1.5 w-full self-center rounded bg-2"></div>
+    <section
+      class="flex justify-between gap-10 overflow-x-auto py-1 px-fluid-4"
+    >
+      <div class="shrink-0">
+        <p class="text-2">total posts</p>
+        <div class="flex items-center gap-3">
+          <Number class="font-3 text-lg">{totalposts}</Number>
+          <Library class="h-6 w-6 shrink-0 stroke-brand-1" aria-hidden />
+        </div>
+      </div>
+      <div class="shrink-0">
+        <p class="text-2">total sites</p>
+        <div class="flex items-center gap-3">
+          <Number class="font-3 text-lg">{totalsites}</Number>
+          <Globe class="h-6 w-6 shrink-0 stroke-brand-1" aria-hidden />
+        </div>
+      </div>
+      <div class="shrink-0">
+        <p class="text-2">posts this week</p>
+        <div class="flex items-center gap-3">
+          <Number class="font-3 text-lg">{postweek}</Number>
+          <Calendar class="h-6 w-6 shrink-0 stroke-brand-1" aria-hidden />
+        </div>
+      </div>
+    </section>
+    <div class="h-1.5 w-full self-center rounded bg-2"></div>
     <section class="flex flex-col gap-fluid-3">
-      <h2 class="text-xl">Recent Posts</h2>
+      <h2 class="text-lg">recent posts</h2>
       <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
           posts.map((post) => (

@@ -10,11 +10,11 @@ const external = href.startsWith('https://');
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
   class={`group flex h-full flex-col gap-2 rounded bg-2 p-3 pb-4 text-sm shadow
-          hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-brand-2`}
+          hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-brand-1`}
 >
-  <div class="flex flex-wrap justify-between gap-x-4 gap-y-2 font-1">
+  <div class="flex flex-wrap justify-between gap-x-4 gap-y-2 font-1 text-xs">
     <div class="rounded-full bg-1 px-4 py-0.5"><slot name="first" /></div>
     <slot name="second" />
   </div>
-  <p class="mt-1 px-2 group-hover:text-brand-2">{title}</p>
+  <p class="mt-1 px-2 group-hover:text-brand-1">{title}</p>
 </a>
