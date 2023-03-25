@@ -20,11 +20,11 @@ if (posts.error) throw posts.error;
 const summaries = sift(
   await parallel(15, posts.data, async (post) => {
     const $ = load(await fetch(post.link).then((res) => res.text()));
-    const content = $('main p').children().remove().end().text().slice(0, 3800);
+    const text = $('article p').children().remove().end().text().slice(0, 3800);
     const payload = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'user', content: `Summarize in 1 paragraph: ${content}` },
+        { role: 'user', content: `Summarize in 1 paragraph: ${text}` },
       ],
     });
 
