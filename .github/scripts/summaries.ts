@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { load } from 'cheerio';
+import fetch from 'node-fetch';
 import { Configuration, OpenAIApi } from 'openai';
 import { parallel, sift } from 'radash';
 import type { Database } from '../../src/lib/supabase/types';
