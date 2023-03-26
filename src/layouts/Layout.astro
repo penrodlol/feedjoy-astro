@@ -39,8 +39,12 @@ const { title = 'feedjoy' } = Astro.props;
       </nav>
     </header>
     <main class="flex-1 pb-fluid-4 motion-safe:animate-fade-in"><slot /></main>
-    <footer class="p-2 text-center text-sm">
-      <p>created by: christian penrod ©{new Date().getUTCFullYear()}</p>
+    <footer class="p-2 text-center font-1 text-2 text-sm">
+      <p>christian penrod ©{new Date().getUTCFullYear()}</p>
+      <p>
+        source code:
+        <Anchor href="https://github.com/penrodlol/feedjoy">github</Anchor>
+      </p>
     </footer>
   </body>
 </html>
