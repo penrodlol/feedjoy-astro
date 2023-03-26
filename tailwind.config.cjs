@@ -24,5 +24,25 @@ module.exports = {
     },
   },
   future: { hoverOnlyWhenSupported: true },
-  plugins: [require('tailwindcss-fluid-type')],
+  plugins: [
+    require('tailwindcss-fluid-type'),
+    ({ theme, addBase }) =>
+      addBase({
+        '*': {
+          scrollbarColor: `${theme('backgroundColor.2')} transparent`,
+          scrollbarWidth: 'thin',
+          '::-webkit-scrollbar': {
+            width: `${theme('spacing.2')}`,
+            height: `${theme('spacing.2')}`,
+            '&-thumb': { backgroundColor: theme('backgroundColor.2') },
+          },
+          '&:focus-visible': {
+            outline: `2px solid ${theme('colors.brand.2')}`,
+            outlineWidth: theme('outlineWidth.2'),
+            outlineOffset: theme('outlineOffset.4'),
+            borderRadius: theme('borderRadius.sm'),
+          },
+        },
+      }),
+  ],
 };
