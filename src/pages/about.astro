@@ -6,17 +6,19 @@ export const prerender = true;
 ---
 
 <Layout title="feedjoy | about">
-  <div class="mx-auto mt-fluid-6 max-w-screen-sm rounded bg-2 p-fluid-3 shadow">
-    <h1 class="mb-8 text-brand-1 text-8xl">feedjoy</h1>
-    <div class="mx-auto flex flex-col gap-4 font-1">
+  <div class="mx-auto mt-fluid-6 flex max-w-screen-sm flex-col gap-10">
+    <h1 class="font-3 text-brand-1 text-5xl">feedjoy</h1>
+    <div class="flex flex-col gap-4 font-1 leading-relaxed">
       <p>
-        feedjoy is a minimal tech blog RSS feed congregator. It serves as a
-        centralized proxy for blog posts I personally enjoy.
+        A minimal tech blog RSS feed congregator. Serving as a centralized proxy
+        for blog posts I personally find valuable.
       </p>
       <p>
-        On a daily basis, feedjoy fetches any new or updated posts across the
-        provided RSS feeds. Providing the ability to keep up with the latest
-        content.
+        On a daily basis, feedjoy fetches any new posts across the provided RSS
+        feeds. Posts' content are then run through
+        <Anchor href="https://platform.openai.com/docs/guides/chat">
+          OpenAI's API
+        </Anchor> to generate summaries.
       </p>
       <p>
         All posts are archived under their respective sites and can be accessed

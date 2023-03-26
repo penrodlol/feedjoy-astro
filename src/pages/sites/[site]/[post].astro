@@ -4,7 +4,7 @@ import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Date from '@components/Date.astro';
 import Layout from '@layouts/Layout.astro';
 import supabase, { Site } from '@lib/supabase';
-import { Calendar, ExternalLink, User } from 'lucide-preact';
+import { Calendar, User } from 'lucide-preact';
 import { z } from 'zod';
 
 const params = z
@@ -48,9 +48,7 @@ const site = post.site as Site;
       <div class="my-5 h-1.5 w-5/6 rounded bg-2"></div>
       <p class="mb-6 leading-loose text-sm">{post.summary}</p>
       <div class="flex justify-end">
-        <Anchor href={post.link} class="text-brand-1">
-          Read Post <ExternalLink aria-hidden />
-        </Anchor>
+        <Anchor href={post.link}>Read Post</Anchor>
       </div>
     </section>
   </div>

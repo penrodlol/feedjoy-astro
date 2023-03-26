@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { ExternalLink } from 'lucide-preact';
 
 type Props = HTMLAttributes<'a'>;
 
@@ -12,7 +13,9 @@ const external = String(href).startsWith('https://');
   href={href}
   target={external ? '_blank' : target}
   rel={external ? 'nofollow noopener noreferrer' : target}
-  class={`inline-flex items-center gap-2 max-w-max hover:text-brand-2 ${className}`}
+  class={`inline-flex items-center gap-2 max-w-max hover:text-brand-2
+          ${external ? 'text-brand-1' : ''} ${className}`}
 >
   <slot />
+  {external && <ExternalLink class="h-5 w-5 -translate-y-0.5" aria-hidden />}
 </a>
