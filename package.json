@@ -17,7 +17,7 @@
     "@supabase/supabase-js": "^2.12.1",
     "cheerio": "^1.0.0-rc.12",
     "openai": "^3.2.1",
-    "radash": "^10.7.1",
+    "radash": "^10.8.1",
     "rss-parser": "^3.12.0",
     "zod": "^3.21.4"
   },
@@ -26,16 +26,16 @@
     "@astrojs/sitemap": "^1.2.1",
     "@astrojs/tailwind": "^3.1.1",
     "@fontsource/outfit": "^4.5.11",
-    "@types/node": "^18.15.8",
-    "@types/node-fetch": "^2.6.2",
-    "astro": "^2.1.7",
+    "@types/node": "^18.15.11",
+    "@types/node-fetch": "^2.6.3",
+    "astro": "^2.1.8",
     "astro-robots-txt": "^0.4.1",
-    "lucide-preact": "^0.127.0",
-    "preact": "^10.13.1",
+    "lucide-preact": "^0.128.0",
+    "preact": "^10.13.2",
     "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",
     "prettier-plugin-tailwindcss": "^0.2.5",
-    "tailwindcss": "^3.2.7",
+    "tailwindcss": "^3.3.0",
     "tailwindcss-fluid-type": "^2.0.3"
   }
 }
