@@ -21,9 +21,9 @@ const summaries = sift(
   await parallel(15, posts.data, async (post) => {
     const $ = load(await fetch(post.link).then((res) => res.text()));
     const root = $('article').length > 0 ? $('article p') : $('body p');
-    const text = root.children().remove().end().text().slice(0, 3800);
+    const text = root.children().remove().end().text().slice(0, 8000);
     const payload = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-4',
       messages: [
         { role: 'user', content: `Summarize in 1 paragraph: ${text}` },
       ],
