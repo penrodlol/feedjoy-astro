@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^2.2.0",
-    "@netlify/functions": "^1.4.0",
     "@supabase/supabase-js": "^2.12.1",
     "cheerio": "^1.0.0-rc.12",
     "openai": "^3.2.1",
