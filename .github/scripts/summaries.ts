@@ -24,7 +24,8 @@ const summaries = sift(
     const $ = load(await fetch(link, { headers }).then((res) => res.text()));
     $('header, footer, aside, noscript').remove();
     const root = $('main').length > 0 ? $('main p') : $('body p');
-    const text = root.text().split(' ').slice(0, 8000).join(' ');
+    const fullText = root.text().replace(/[^\x00-\x7F]/g, '');
+    const text = fullText.split(' ').slice(0, 8000).join(' ');
 
     const payload = await openai.createChatCompletion({
       model: 'gpt-4',
