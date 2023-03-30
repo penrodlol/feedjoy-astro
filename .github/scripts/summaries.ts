@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { load } from 'cheerio';
+import { decode, encode } from 'gpt-3-encoder';
 import fetch from 'node-fetch';
 import { Configuration, OpenAIApi } from 'openai';
 import { parallel, sift } from 'radash';
@@ -24,8 +25,7 @@ const summaries = sift(
     const $ = load(await fetch(link, { headers }).then((res) => res.text()));
     $('header, footer, aside, noscript').remove();
     const root = $('main').length > 0 ? $('main p') : $('body p');
-    const fullText = root.text().replace(/[^\x00-\x7F]/g, '');
-    const text = fullText.split(' ').slice(0, 8000).join(' ');
+    const text = decode(encode(root.text()).slice(0, 8000));
 
     const payload = await openai.createChatCompletion({
       model: 'gpt-4',
