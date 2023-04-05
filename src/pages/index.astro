@@ -5,7 +5,7 @@ import Date from '@components/Date.astro';
 import Number from '@components/Number.astro';
 import Layout from '@layouts/Layout.astro';
 import supabase, { type Site } from '@lib/supabase';
-import { ArrowRight, Calendar, Globe, Library, User } from 'lucide-preact';
+import { ArrowRight, User } from 'lucide-preact';
 
 const _root = await supabase.rpc('get_root_summary').single();
 if (_root.error) throw new Error(_root.error.message);
@@ -24,43 +24,28 @@ const posts = _posts.data.map((post) => ({ ...post, site: post.site as Site }));
 ---
 
 <Layout>
-  <div class="my-fluid-4 mx-auto flex max-w-screen-md flex-col gap-fluid-3">
+  <div class="mx-auto my-fluid-4 flex max-w-screen-md flex-col gap-fluid-3">
     <section>
-      <h1 class="mb-4 font-2 text-7xl">feedjoy</h1>
-      <p class="mb-fluid-4 text-2 text-xl">a minimal rss feed congregator</p>
-      <Anchor href="/page/1" class="font-3 text-brand-1 text-xl">
-        view all posts <ArrowRight class="h-8 w-8 shrink-0" aria-hidden />
-      </Anchor>
+      <h1 class="mb-2 font-fancy -tracking-[0.1em] text-6xl">feedjoy</h1>
+      <p class="mb-fluid-4 text-2 text-lg">a minimal rss feed congregator</p>
+      <ul class="flex max-w-max items-center gap-fluid-4 overflow-x-auto pb-1">
+        <li class="flex shrink-0 flex-col gap-x-3 sm:flex-row sm:items-center">
+          <span class="text-2">total posts:</span>
+          <Number>{totalposts}</Number>
+        </li>
+        <li class="flex shrink-0 flex-col gap-x-3 sm:flex-row sm:items-center">
+          <span class="text-2">total sites:</span>
+          <Number>{totalsites}</Number>
+        </li>
+        <li class="flex shrink-0 flex-col gap-x-3 sm:flex-row sm:items-center">
+          <span class="text-2">posts this week:</span>
+          <Number>{postweek}</Number>
+        </li>
+      </ul>
     </section>
     <div class="h-1.5 w-full self-center rounded bg-2"></div>
-    <section
-      class="flex justify-between gap-10 overflow-x-auto py-1 px-fluid-4"
-    >
-      <div class="shrink-0">
-        <p class="text-2">total posts</p>
-        <div class="flex items-center gap-3">
-          <Number class="font-3 text-lg">{totalposts}</Number>
-          <Library class="h-6 w-6 shrink-0 stroke-brand-1" aria-hidden />
-        </div>
-      </div>
-      <div class="shrink-0">
-        <p class="text-2">total sites</p>
-        <div class="flex items-center gap-3">
-          <Number class="font-3 text-lg">{totalsites}</Number>
-          <Globe class="h-6 w-6 shrink-0 stroke-brand-1" aria-hidden />
-        </div>
-      </div>
-      <div class="shrink-0">
-        <p class="text-2">posts this week</p>
-        <div class="flex items-center gap-3">
-          <Number class="font-3 text-lg">{postweek}</Number>
-          <Calendar class="h-6 w-6 shrink-0 stroke-brand-1" aria-hidden />
-        </div>
-      </div>
-    </section>
-    <div class="h-1.5 w-full self-center rounded bg-2"></div>
-    <section class="flex flex-col gap-fluid-3">
-      <h2 class="text-lg">recent posts</h2>
+    <section class="flex flex-col gap-2">
+      <h2 class="text-2 text-lg">recent posts</h2>
       <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
           posts.map((post) => (
@@ -70,10 +55,10 @@ const posts = _posts.data.map((post) => ({ ...post, site: post.site as Site }));
                 title={post.title}
               >
                 <p slot="first" class="flex items-center gap-2">
-                  <User class="stroke-brand-1 h-4 w-4 shrink-0" />
+                  <User class="h-4 w-4 shrink-0" />
                   <span>{post.site.name}</span>
                 </p>
-                <p slot="second" class="text-2 flex items-center gap-2">
+                <p slot="second">
                   <Date>{post.pub_date}</Date>
                 </p>
               </Card>
@@ -81,6 +66,10 @@ const posts = _posts.data.map((post) => ({ ...post, site: post.site as Site }));
           ))
         }
       </ul>
+      <Anchor class="mt-4 self-end" href="/page/1">
+        read all posts
+        <ArrowRight class="h-5 w-5" aria-hidden />
+      </Anchor>
     </section>
   </div>
 </Layout>

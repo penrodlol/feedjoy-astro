@@ -13,8 +13,8 @@ const external = String(href).startsWith('https://');
   href={href}
   target={external ? '_blank' : target}
   rel={external ? 'nofollow noopener noreferrer' : target}
-  class={`inline-flex items-center gap-1 max-w-max hover:text-brand-2
-          ${external ? 'text-brand-1' : ''} ${className}`}
+  class={`inline-flex items-center gap-1 max-w-max hover:text-brand
+          ${external ? 'text-brand hover:opacity-75' : ''} ${className}`}
 >
   <slot />
   {external && <ExternalLink class="h-4 w-4" aria-hidden />}

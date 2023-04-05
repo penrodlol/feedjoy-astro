@@ -18,8 +18,8 @@ const { current, isFirst, isLast, prefix = '/' } = Astro.props;
         href={`${prefix}page/${current - 1}`}
         class="group flex items-center gap-2"
       >
-        <ArrowLeft class="stroke-brand-1" aria-hidden />
-        <span class="group-hover:text-brand-1">previous</span>
+        <ArrowLeft class="stroke-brand" aria-hidden />
+        <span class="group-hover:text-brand">previous</span>
       </a>
     )
   }
@@ -29,8 +29,8 @@ const { current, isFirst, isLast, prefix = '/' } = Astro.props;
         href={`${prefix}page/${current + 1}`}
         class="group ml-auto flex items-center gap-2"
       >
-        <span class="group-hover:text-brand-1">next</span>
-        <ArrowRight class="stroke-brand-1" aria-hidden />
+        <span class="group-hover:text-brand">next</span>
+        <ArrowRight class="stroke-brand" aria-hidden />
       </a>
     )
   }

@@ -478,10 +478,15 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.16.17.tgz#c5a1a4bfe1b57f0c3e61b29883525c6da3e5c091"
   integrity sha512-y+EHuSchhL7FjHgvQL/0fnnFmO4T1bhvWANX6gcnqTjtnKWbTvUMCpGnv2+t+31d7RzyEAYAd4u2fnIhHL6N/Q==
 
-"@fontsource/outfit@^4.5.11":
-  version "4.5.11"
-  resolved "https://registry.yarnpkg.com/@fontsource/outfit/-/outfit-4.5.11.tgz#1831945715231ad83ef75d49fb0b7bbdb9d972dd"
-  integrity sha512-msPqJLLmSyWj/YtJknO75RjoTHIep6mDjnDO5IrZUJea31bO4s1QCuepG54LsmMXLKs+gp603nPM8/SUv5ZgSg==
+"@fontsource/kaisei-tokumin@^4.5.12":
+  version "4.5.12"
+  resolved "https://registry.yarnpkg.com/@fontsource/kaisei-tokumin/-/kaisei-tokumin-4.5.12.tgz#8a646b6c3c202f78cfd38a921123ef4908318eb2"
+  integrity sha512-fd39zDO3KQ7dXQ6+2/eTigA1VptY0CV/7J4vH/AqF7AQlv7WWqnxX/MW6NfeGkljB0YlA4X494oYeeuv2kd6Qw==
+
+"@fontsource/taviraj@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/taviraj/-/taviraj-4.5.9.tgz#fbef0cf10afae6b470e87fe195f4ef95a50a913d"
+  integrity sha512-6ofnkO3DFYJzVjl8NYj4aRuV0dmOqOVjwK27A9QLuaX7jlqNPS8a7iYukYetz8fVZe/NfzXJTV6ar9+2v8kdng==
 
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
@@ -602,10 +607,10 @@
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/gotrue-js@^2.16.0":
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-2.16.0.tgz#518b382e2050dcb442e39ac04f98f7be1373e55b"
-  integrity sha512-k7curH5xxnQmUiG8AeFW7KEJST99vhFnBCidWFhuSSyLP1Ja8Ix3g4bmLUv209mhX8LmAaDMGKNQs8gG0MOKCw==
+"@supabase/gotrue-js@^2.18.1":
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-2.18.1.tgz#aad66e55faeaf2fbaea526570680dbee3fa4f341"
+  integrity sha512-nXTQPbV1t1WRmdAfUeed0uIXiTwNplCGVEnHbbymyx0V7YZShlzgayuB5WZDRZLau5jg616NIRWf6/9VNF3hlg==
   dependencies:
     cross-fetch "^3.1.5"
 
@@ -632,13 +637,13 @@
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/supabase-js@^2.12.1":
-  version "2.12.1"
-  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.12.1.tgz#64a1169847af85fabb15d407d4a3e688ff415a30"
-  integrity sha512-sni5tYUCjLd57xuFbL8iGP/hAq2rS/Bxh3StrGjO0v78bMcS+WPh6E/WV5SstvOrxS78RKI8fASm3jk8/UjVXA==
+"@supabase/supabase-js@^2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.14.0.tgz#b0bf872884efa837dd952044e72fad947d15ea85"
+  integrity sha512-pdcYDaxTUqv5A8NqDnLn731rTP0Wm469H+0ag6Jb8YpWR95rmusfpGY7vrykWXvdnvCMxoG6eEwSF9vQtxVrow==
   dependencies:
     "@supabase/functions-js" "^2.1.0"
-    "@supabase/gotrue-js" "^2.16.0"
+    "@supabase/gotrue-js" "^2.18.1"
     "@supabase/postgrest-js" "^1.1.1"
     "@supabase/realtime-js" "^2.7.1"
     "@supabase/storage-js" "^2.3.1"
@@ -885,10 +890,10 @@ astro-robots-txt@^0.4.1:
     valid-filename "^4.0.0"
     zod "^3.21.4"
 
-astro@^2.1.8:
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-2.1.8.tgz#c67b8cf0a2672c393e721ee990d5386a53456a36"
-  integrity sha512-4XryaPNUSf6u9rwzd4gd9lX3KpVaann8DesWxIPE3IdhpVjzY0U0wqUjuvkw3DKUbKr4eLbbvJDb4+5h0q623g==
+astro@^2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-2.1.9.tgz#d47fcfc5c83b2f91a63fee4705fb90421069b2be"
+  integrity sha512-UkbG0lgue1b/t4yMI+AkAGEfdOwcPS2RUYQ/QIurtKjP6W5gtKQveRTBuHH7iwiBziH+z8Ecc5/OAALoXSvMlQ==
   dependencies:
     "@astrojs/compiler" "^1.3.0"
     "@astrojs/language-server" "^0.28.3"
@@ -2317,10 +2322,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lucide-preact@^0.128.0:
-  version "0.128.0"
-  resolved "https://registry.yarnpkg.com/lucide-preact/-/lucide-preact-0.128.0.tgz#cd1750d8620691b2b5b90e25daca9b1517f5d46c"
-  integrity sha512-mhPTbajkFRAE1QZ292PvVnrxE+f51g7tbpUTzLW5aUzHy7XA2ZK0Lrt2tZz2HNn/z6tW+C8NUSVwbhlERCbhAQ==
+lucide-preact@^0.130.0:
+  version "0.130.0"
+  resolved "https://registry.yarnpkg.com/lucide-preact/-/lucide-preact-0.130.0.tgz#0902fb8d7280e403dbe06027d7f4c571e748373f"
+  integrity sha512-KmaX9lIyKO+JnWym39a8Lcz3M3YUPWTthoTh3xxde/H78qysn/iryWC3JuM3Z3YWYD0ojdemQMUjLsTfBy6KNw==
 
 magic-string@^0.27.0:
   version "0.27.0"
@@ -3197,10 +3202,10 @@ prettier-plugin-astro@^0.8.0:
     sass-formatter "^0.7.5"
     synckit "^0.8.4"
 
-prettier-plugin-tailwindcss@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.2.5.tgz#fb9f07f22d0658fdedbf4d83254bf907656f7500"
-  integrity sha512-vZ/iKieyCx0WTxHbkf5E1rBlv/ybFk8WTT4hL5W2jlVxum2Zbe0jMUpuQdDrpa4z2vnPiJ5KIWCqL/kd16fKYg==
+prettier-plugin-tailwindcss@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.2.6.tgz#d57e3d960f1a968bf16d2a5846e94f95d6b8add2"
+  integrity sha512-F+7XCl9RLF/LPrGdUMHWpsT6TM31JraonAUyE6eBmpqymFvDwyl0ETHsKFHP1NG+sEfv8bmKqnTxEbWQbHPlBA==
 
 prettier@^2.7.1, prettier@^2.8.3:
   version "2.8.4"
@@ -3687,10 +3692,10 @@ tailwindcss-fluid-type@^2.0.3:
   resolved "https://registry.yarnpkg.com/tailwindcss-fluid-type/-/tailwindcss-fluid-type-2.0.3.tgz#80fa66a9b2a1745001fad39e32a9d564ba4f4a79"
   integrity sha512-PE1yz2R+wMyB9updGxU3Ru/NzN2ZelRzEbkdR1F4Q3jlmma8MGnEfKG2Qkpzbmo49QYLUD/cFIUF23MmC6OMTA==
 
-tailwindcss@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.0.tgz#8cab40e5a10a10648118c0859ba8bfbc744a761e"
-  integrity sha512-hOXlFx+YcklJ8kXiCAfk/FMyr4Pm9ck477G0m/us2344Vuj355IpoEDB5UmGAsSpTBmr+4ZhjzW04JuFXkb/fw==
+tailwindcss@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.1.tgz#b6662fab6a9b704779e48d083a9fef5a81d2b81e"
+  integrity sha512-Vkiouc41d4CEq0ujXl6oiGFQ7bA3WEhUZdTgXAhtKxSy49OmKs8rEfQmupsfF0IGW8fv2iQkp1EVUuapCFrZ9g==
   dependencies:
     arg "^5.0.2"
     chokidar "^3.5.3"
@@ -3930,10 +3935,10 @@ update-browserslist-db@^1.0.10:
     escalade "^3.1.1"
     picocolors "^1.0.0"
 
-user-agents@^1.0.1332:
-  version "1.0.1332"
-  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.1332.tgz#52c104e07412dfc9f5f870c04b594bbeaf8dec83"
-  integrity sha512-SJ3j4vszzOa2dK9JwCGRVNiuMY8O/DgPlmBeUWVI+/mKl30C5LJwCkZpFbg/D3y4P9hbwabm0GAweJlj1GGHMA==
+user-agents@^1.0.1338:
+  version "1.0.1338"
+  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.1338.tgz#17adee2a2691fe87b24e3b7a2d70711b234a5c6f"
+  integrity sha512-Z+32j1kuTLtHxbkDHf+brCsJ2tHpw9SJkU4sFO5eUlUzSx4uuvIZys+D6ysw7VNrRDaRk1ryoBrrmX3sPpgATw==
   dependencies:
     dot-json "^1.2.2"
     lodash.clonedeep "^4.5.0"

@@ -1,8 +1,8 @@
 ---
 import Anchor from '@components/Anchor.astro';
-import '@fontsource/outfit/200.css';
-import '@fontsource/outfit/400.css';
-import '@fontsource/outfit/600.css';
+import '@fontsource/kaisei-tokumin/500.css';
+import '@fontsource/taviraj/400.css';
+import '@fontsource/taviraj/700.css';
 import { Home } from 'lucide-preact';
 
 type Props = { title?: string };
@@ -22,10 +22,12 @@ const { title = 'feedjoy' } = Astro.props;
   </head>
   <body
     class={`flex min-h-screen flex-col bg-1 text-1
-            text-base max-w-screen-lg mx-auto px-fluid-4`}
+            text-base max-w-screen-lg mx-auto px-fluid-4
+            selection:bg-brand selection:text-black`}
   >
     <header
-      class="m-4 mx-auto flex w-full max-w-screen-md justify-between rounded bg-2 py-2 px-4 shadow"
+      class={`flex items-center justify-between rounded bg-2 px-4
+              py-2 shadow m-4 max-w-screen-sm mx-auto w-full`}
     >
       <Anchor href="/" aria-label="Home">
         <Home class="h-5 w-5" aria-hidden />

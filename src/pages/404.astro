@@ -1,0 +1,17 @@
+---
+import Anchor from '@components/Anchor.astro';
+import Layout from '@layouts/Layout.astro';
+import { ArrowLeft } from 'lucide-preact';
+
+export const prerender = true;
+---
+
+<Layout title="feedjoy">
+  <div class="mt-fluid-6 flex flex-col items-center gap-2 text-center">
+    <h1 class="font-fancy -tracking-[0.1em] text-9xl">404</h1>
+    <p class="text-2 text-2xl">page not found</p>
+    <Anchor href="/" class="mt-fluid-4">
+      <ArrowLeft aria-hidden /> go to home
+    </Anchor>
+  </div>
+</Layout>
