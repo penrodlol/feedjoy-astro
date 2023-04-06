@@ -1,13 +1,18 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,tsx}'],
   theme: {
     extend: {
-      fontFamily: { sans: ['Outfit'] },
-      textColor: { 1: '#FAFAFA', 2: '#868690' },
-      backgroundColor: { 1: '#131313', 2: '#212121' },
-      colors: { brand: { 1: '#D8E0FF', 2: '#C9D4FF' } },
-      fontWeight: { 1: 200, 2: 400, 3: 600 },
+      fontFamily: {
+        sans: ['Taviraj', ...fontFamily.sans],
+        fancy: ['Kaisei Tokumin', fontFamily.sans],
+      },
+      textColor: { 1: '#d0d0d0', 2: '#7b7b7b' },
+      backgroundColor: { 1: '#0e0f11', 2: '#151515', 3: '#242424' },
+      colors: { brand: '#fff' },
+      fontWeight: { 1: 300, 2: 400, 3: 500 },
       spacing: {
         'fluid-1': 'clamp(0.25rem, calc(-0.09rem + 1.71vw), 1.13rem)',
         'fluid-2': 'clamp(0.5rem, calc(0.11rem + 1.95vw), 1.5rem)',
@@ -37,8 +42,8 @@ module.exports = {
             '&-thumb': { backgroundColor: theme('backgroundColor.2') },
           },
           '&:focus-visible': {
-            outline: `2px solid ${theme('colors.brand.2')}`,
-            outlineWidth: theme('outlineWidth.2'),
+            outline: `2px solid ${theme('colors.brand')}`,
+            outlineWidth: theme('outlineWidth.1'),
             outlineOffset: theme('outlineOffset.4'),
             borderRadius: theme('borderRadius.sm'),
           },

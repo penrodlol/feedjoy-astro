@@ -28,7 +28,7 @@ const sites = data.map((site) => ({ ...site, post: site.post as Post[] }));
 
 <Layout title="feedjoy | sites">
   <div class="mt-fluid-4 flex flex-col gap-fluid-2">
-    <h1 class="text-brand-1 text-2xl">sites</h1>
+    <h1 class="mb-1 font-fancy -tracking-[0.1em] text-3xl">sites</h1>
     <section>
       <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
@@ -36,12 +36,12 @@ const sites = data.map((site) => ({ ...site, post: site.post as Post[] }));
             <li>
               <Card href={`/sites/${site.slug}/page/1`} title={site.name}>
                 <p slot="first" class="flex items-center gap-2">
-                  <Library class="stroke-brand-1 h-4 w-4 shrink-0" />
+                  <Library class="h-4 w-4 shrink-0" />
                   <span>
                     <Number>{site.post.length}</Number> posts
                   </span>
                 </p>
-                <p slot="second" class="text-2 flex items-center gap-2">
+                <p slot="second" class="flex items-center gap-2">
                   <History class="h-4 w-4 shrink-0" />
                   <Date>{site.post[0]?.pub_date}</Date>
                 </p>
