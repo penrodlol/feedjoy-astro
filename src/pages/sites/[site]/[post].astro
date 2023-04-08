@@ -2,6 +2,7 @@
 import Anchor from '@components/Anchor.astro';
 import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Date from '@components/Date.astro';
+import { CACHE_CONTROL } from '@const/headers';
 import Layout from '@layouts/Layout.astro';
 import supabase, { Site } from '@lib/supabase';
 import { Calendar, User } from 'lucide-preact';
@@ -20,7 +21,7 @@ const { data: post, error } = await supabase
   .single();
 if (error) return Astro.redirect('/sites/page/1');
 
-// Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+Astro.response.headers.set('Cache-Control', CACHE_CONTROL);
 
 const site = post.site as Site;
 ---
