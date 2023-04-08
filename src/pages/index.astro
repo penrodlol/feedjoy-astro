@@ -3,6 +3,7 @@ import Anchor from '@components/Anchor.astro';
 import Card from '@components/Card.astro';
 import Date from '@components/Date.astro';
 import Number from '@components/Number.astro';
+import { CACHE_CONTROL } from '@const/headers';
 import Layout from '@layouts/Layout.astro';
 import supabase, { type Site } from '@lib/supabase';
 import { ArrowRight, User } from 'lucide-preact';
@@ -17,7 +18,7 @@ const _posts = await supabase
   .limit(6);
 if (_posts.error) throw new Error(_posts.error.message);
 
-Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+Astro.response.headers.set('Cache-Control', CACHE_CONTROL);
 
 const { totalposts, totalsites, postweek } = _root.data;
 const posts = _posts.data.map((post) => ({ ...post, site: post.site as Site }));

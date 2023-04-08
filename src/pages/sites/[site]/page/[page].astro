@@ -3,6 +3,7 @@ import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Card from '@components/Card.astro';
 import Date from '@components/Date.astro';
 import Paginator from '@components/Paginator.astro';
+import { CACHE_CONTROL } from '@const/headers';
 import { paramsSchema } from '@const/params';
 import Layout from '@layouts/Layout.astro';
 import supabase, { type Post } from '@lib/supabase';
@@ -25,7 +26,7 @@ const { data: site, error } = await supabase
   .single();
 if (error) return Astro.redirect('/sites');
 
-Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+Astro.response.headers.set('Cache-Control', CACHE_CONTROL);
 
 const posts = site.post as Array<Post>;
 if (!posts.length) return Astro.redirect(`/sites/${params.data.slug}/page/1`);
