@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import { flat, parallel } from 'radash';
 import Parser from 'rss-parser';
 import type { Database } from '../../src/lib/supabase/types';
 
@@ -13,8 +12,8 @@ if (sites.error) throw sites.error;
 
 const parser = new Parser();
 const twoDaysAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000);
-const posts = flat(
-  await parallel(15, sites.data, async (site) => {
+const posts = await Promise.all(
+  sites.data.map(async (site) => {
     const feed = await parser.parseURL(site.url);
 
     return feed.items
@@ -29,7 +28,8 @@ const posts = flat(
   }),
 );
 
-const payload = await supabase
-  .from('post')
-  .upsert(posts, { onConflict: 'site_id, link', ignoreDuplicates: true });
+const payload = await supabase.from('post').upsert(posts.flat(), {
+  onConflict: 'site_id, link',
+  ignoreDuplicates: true,
+});
 if (payload.error) throw payload.error;

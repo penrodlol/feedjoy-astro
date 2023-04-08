@@ -1,9 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { load } from 'cheerio';
 import { decode, encode } from 'gpt-3-encoder';
-import fetch from 'node-fetch';
 import { Configuration, OpenAIApi } from 'openai';
-import { parallel, sift } from 'radash';
 import UserAgent from 'user-agents';
 import type { Database } from '../../src/lib/supabase/types';
 
@@ -20,8 +18,8 @@ const posts = await supabase.from('post').select().is('summary', null);
 if (posts.error) throw posts.error;
 
 const headers = { 'User-Agent': new UserAgent(/Chrome/).toString() };
-const summaries = sift(
-  await parallel(15, posts.data, async ({ id, link }) => {
+const summaries = await Promise.all(
+  posts.data.map(async ({ id, link }) => {
     const $ = load(await fetch(link, { headers }).then((res) => res.text()));
     $('header, footer, aside, noscript').remove();
     const root = $('main').length > 0 ? $('main p') : $('body p');
@@ -39,5 +37,7 @@ const summaries = sift(
   }),
 );
 
-const payload = await supabase.rpc('bulk_update_summaries', { summaries });
+const payload = await supabase.rpc('bulk_update_summaries', {
+  summaries: summaries.filter((summary) => !!summary),
+});
 if (payload.error) throw payload.error;
