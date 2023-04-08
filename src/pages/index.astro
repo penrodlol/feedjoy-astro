@@ -17,7 +17,7 @@ const _posts = await supabase
   .limit(6);
 if (_posts.error) throw new Error(_posts.error.message);
 
-Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+// Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
 
 const { totalposts, totalsites, postweek } = _root.data;
 const posts = _posts.data.map((post) => ({ ...post, site: post.site as Site }));

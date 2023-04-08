@@ -25,7 +25,7 @@ const { data: site, error } = await supabase
   .single();
 if (error) return Astro.redirect('/sites');
 
-Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
+// Astro.response.headers.set('cache-control', 'max-age=0, s-maxage=86400');
 
 const posts = site.post as Array<Post>;
 if (!posts.length) return Astro.redirect(`/sites/${params.data.slug}/page/1`);
