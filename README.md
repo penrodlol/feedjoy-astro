@@ -2,6 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/af4929ae-4a1b-495e-a018-2c12848510c0/deploy-status)](https://app.netlify.com/sites/feedjoy/deploys)
 
+[![Daily Job Status](https://github.com/penrodlol/feedjoy/actions/workflows/cron.yml/badge.svg)](https://github.com/penrodlol/feedjoy/actions/workflows/cron.yml)
+
 <p>
   A minimal tech blog RSS feed congregator. Serving as a centralized proxy for blog posts I personally find valuable.
 </p>
