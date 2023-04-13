@@ -14,7 +14,10 @@ const parser = new Parser();
 const twoDaysAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000);
 const posts = await Promise.all(
   sites.data.map(async (site) => {
-    const feed = await parser.parseURL(site.url);
+    const feed = await parser
+      .parseURL(site.url)
+      .catch(() => console.error(site.name));
+    if (!feed) return [];
 
     return feed.items
       .filter((post) => post.title && post.link && post.pubDate)
