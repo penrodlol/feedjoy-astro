@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Taviraj', ...fontFamily.sans],
-        fancy: ['Kaisei Tokumin', fontFamily.sans],
+        fancy: ['Kaisei Tokumin', ...fontFamily.sans],
       },
       textColor: { 1: '#d0d0d0', 2: '#7b7b7b' },
       backgroundColor: { 1: '#0e0f11', 2: '#151515', 3: '#242424' },

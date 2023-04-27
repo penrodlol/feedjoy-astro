@@ -1,10 +1,10 @@
 ---
-import Card from '@components/Card.astro';
-import Date from '@components/Date.astro';
-import Paginator from '@components/Paginator.astro';
+import Card from '@components/card.astro';
+import Date from '@components/date.astro';
+import Paginator from '@components/paginator.astro';
 import { CACHE_CONTROL } from '@const/headers';
 import { pageSchema } from '@const/schemas';
-import Layout from '@layouts/Layout.astro';
+import Layout from '@layouts/layout.astro';
 import supabase, { type Site } from '@lib/supabase';
 import { User } from 'lucide-preact';
 import { z } from 'zod';
