@@ -3,12 +3,13 @@ import Card from '@components/Card.astro';
 import Date from '@components/Date.astro';
 import Paginator from '@components/Paginator.astro';
 import { CACHE_CONTROL } from '@const/headers';
-import { paramsSchema } from '@const/params';
+import { pageSchema } from '@const/schemas';
 import Layout from '@layouts/Layout.astro';
 import supabase, { type Site } from '@lib/supabase';
 import { User } from 'lucide-preact';
+import { z } from 'zod';
 
-const params = paramsSchema.safeParse(Astro.params);
+const params = z.object({ page: pageSchema }).safeParse(Astro.params);
 if (!params.success) return Astro.redirect('/page/1');
 
 const { data, error } = await supabase

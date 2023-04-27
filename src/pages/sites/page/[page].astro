@@ -4,12 +4,13 @@ import Date from '@components/Date.astro';
 import Number from '@components/Number.astro';
 import Paginator from '@components/Paginator.astro';
 import { CACHE_CONTROL } from '@const/headers';
-import { paramsSchema } from '@const/params';
+import { pageSchema } from '@const/schemas';
 import Layout from '@layouts/Layout.astro';
 import supabase, { type Post } from '@lib/supabase';
 import { History, Library } from 'lucide-preact';
+import { z } from 'zod';
 
-const params = paramsSchema.safeParse(Astro.params);
+const params = z.object({ page: pageSchema }).safeParse(Astro.params);
 if (!params.success) return Astro.redirect('/sites/pages/1');
 
 const { data, error } = await supabase

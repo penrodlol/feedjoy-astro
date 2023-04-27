@@ -3,13 +3,14 @@ import Anchor from '@components/Anchor.astro';
 import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Date from '@components/Date.astro';
 import { CACHE_CONTROL } from '@const/headers';
+import { slugSchema } from '@const/schemas';
 import Layout from '@layouts/Layout.astro';
 import supabase, { Site } from '@lib/supabase';
 import { Calendar, User } from 'lucide-preact';
 import { z } from 'zod';
 
 const params = z
-  .object({ site: z.string(), post: z.string() })
+  .object({ site: slugSchema, post: slugSchema })
   .safeParse(Astro.params);
 if (!params.success) return Astro.redirect('/sites/page/1');
 
