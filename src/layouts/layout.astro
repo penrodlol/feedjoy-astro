@@ -27,8 +27,8 @@ const { title = 'feedjoy' } = Astro.props;
             selection:bg-brand selection:text-black`}
   >
     <header
-      class={`flex items-center rounded bg-2 px-4 py-2 shadow m-4
-              max-w-screen-md mx-auto w-full gap-3`}
+      class={`flex items-center rounded bg-2 px-4 py-2 shadow
+              my-4 max-w-screen-md mx-auto w-full gap-3`}
     >
       <Anchor href="/" class="mr-auto" aria-label="Home">
         <Home class="h-5 w-5" aria-hidden />
@@ -41,7 +41,7 @@ const { title = 'feedjoy' } = Astro.props;
         </ul>
       </nav>
       <div class="w-1 self-stretch rounded bg-3"></div>
-      <Search client:only />
+      <div><Search client:load /></div>
     </header>
     <main class="flex-1 pb-fluid-4 motion-safe:animate-fade-in"><slot /></main>
     <footer class="p-2 text-center text-2 text-sm">
