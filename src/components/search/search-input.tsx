@@ -1,15 +1,20 @@
 import { Search, X } from 'lucide-preact';
 import { useState } from 'preact/hooks';
+import { search } from './store';
 
 export default function SearchInput() {
   const [disabled, setDisabled] = useState(true);
 
   return (
     <form
-      class="flex h-full flex-col gap-6 px-7 py-5"
-      onSubmit={(e) => {
+      class="flex flex-col gap-6"
+      onReset={() => setDisabled(true)}
+      onSubmit={async (e) => {
+        const { submitter } = e as unknown as SubmitEvent;
+        if (submitter?.getAttribute('value') === 'cancel') return;
+
         e.preventDefault();
-        const query = new FormData(e.currentTarget).get('query')?.toString();
+        await search(new FormData(e.currentTarget));
       }}
     >
       <span class="text-lg">search posts</span>
@@ -36,10 +41,21 @@ export default function SearchInput() {
             onInput={(e) => setDisabled(!e.currentTarget.value.trim().length)}
           />
         </div>
-        <button type="submit" disabled={disabled}>
-          search
+        <button
+          type="submit"
+          class="select-none rounded bg-brand px-2 py-0.5 shadow enabled:hover:bg-opacity-90
+                 disabled:cursor-not-allowed disabled:opacity-50"
+          disabled={disabled}
+        >
+          <span class="invert">search</span>
         </button>
-        <button type="reset" disabled={disabled}>
+        <button
+          type="reset"
+          class="select-none rounded px-2 py-0.5 outline outline-1 outline-brand
+               enabled:hover:bg-brand enabled:hover:bg-opacity-10 disabled:cursor-not-allowed
+                 disabled:opacity-50"
+          disabled={disabled}
+        >
           clear
         </button>
       </div>
