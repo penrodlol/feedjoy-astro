@@ -530,6 +530,11 @@
   resolved "https://registry.yarnpkg.com/@ljharb/has-package-exports-patterns/-/has-package-exports-patterns-0.0.2.tgz#c1718939b65efa1f45f53686c2fcfa992b9fb68f"
   integrity sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==
 
+"@nanostores/preact@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@nanostores/preact/-/preact-0.4.1.tgz#b128018ab2c1d7e9a03d64584b07f98928eb7e8a"
+  integrity sha512-a5nUVjoGuPqdMBUINOFbQKPfabD1mVLcuspefmtdKZqhvXeDkw9Vg8S6xINIjfWnu/eZgpA+Hb1Pkl/Sx1l/vw==
+
 "@netlify/functions@^1.0.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@netlify/functions/-/functions-1.4.0.tgz#027a2e5d54df5519ccbd14cf450231e97bbbf93a"
@@ -2804,6 +2809,11 @@ nanoid@^3.3.4, nanoid@^3.3.6:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
+
+nanostores@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/nanostores/-/nanostores-0.8.1.tgz#963577028ac10eeb50bec376535f4762ab5af9be"
+  integrity sha512-1ZCfQtII2XeFDrtqXL2cdQ/diGrLxzRB3YMyQjn8m7GSGQrJfGST2iuqMpWnS/ZlifhtjgR/SX0Jy6Uij6lRLA==
 
 next-tick@^1.1.0:
   version "1.1.0"
